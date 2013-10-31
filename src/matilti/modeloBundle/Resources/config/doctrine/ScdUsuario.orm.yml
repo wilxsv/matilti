@@ -1,0 +1,128 @@
+matilti\modeloBundle\Entity\ScdUsuario:
+  type: entity
+  table: scd_usuario
+  repositoryClass: matilti\modeloBundle\Repository\ScdUsuarioRepository
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    username:
+      type: string
+      length: 50
+      fixed: false
+      nullable: false
+    password:
+      type: text
+      nullable: false
+    correousuario:
+      type: string
+      length: null
+      fixed: false
+      nullable: false
+    detalleusuario:
+      type: text
+      nullable: true
+    ultimavisitausuario:
+      type: datetime
+      nullable: false
+    ipusuario:
+      type: string
+      length: null
+      fixed: false
+      nullable: false
+    salt:
+      type: text
+      nullable: false
+    nombreusuario:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+    apellidousuario:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+    telefonousuario:
+      type: bigint
+      nullable: false
+    nacimientousuario:
+      type: date
+      nullable: false
+    latusuario:
+      type: float
+      nullable: false
+    lonusuario:
+      type: float
+      nullable: false
+    direccionusuario:
+      type: text
+      nullable: true
+    sexousuario:
+      type: decimal
+      nullable: false
+    registrousuario:
+      type: datetime
+      nullable: false
+    cuentausuario:
+      type: text
+      nullable: false
+    imagenusuario:
+      type: text
+      nullable: true
+  manyToMany:
+    rol:
+      targetEntity: ScdRol
+      cascade: {  }
+      mappedBy: null
+      inversedBy: usuario
+      joinTable:
+        name: scd_usuario_rol
+        joinColumns:
+          -
+            name: usuario_id
+            referencedColumnName: id
+        inverseJoinColumns:
+          -
+            name: rol_id
+            referencedColumnName: id
+      orderBy: null
+    entidad:
+      targetEntity: ScdEntidad
+      cascade: {  }
+      mappedBy: null
+      inversedBy: usuario
+      joinTable:
+        name: scd_usuario_entidad
+        joinColumns:
+          -
+            name: usuario_id
+            referencedColumnName: id
+        inverseJoinColumns:
+          -
+            name: entidad_id
+            referencedColumnName: id
+      orderBy: null
+  oneToOne:
+    estado:
+      targetEntity: ScdEstado
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        estado_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    localidad:
+      targetEntity: ScdLocalidad
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        localidad_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

@@ -1,0 +1,26 @@
+<h2>Encuestas <span>Enviadas</span></h2>
+<article>
+<table class="visualize" cellspacing="0">
+     <thead>
+      <tr>
+       <th style="width:50%">Encuesta</th>
+       <th>Respuestas</th>
+       <th>Fecha / Hora Inicio</th>
+       <th>Fecha / Hora Fin</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for item in pager.getResults %}
+       <tr>
+        <td>{{ item.mensajeencuesta }}</td>
+        <td>{{ item.respuestasencuesta }}</td>
+        <td>{{ item.fechahorainicio|date("Y/m/d H:i:s") }}</td>
+	<td>{{ item.fechahorafin|date("Y/m/d H:i:s") }}</td>
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    {% if pager.isPaginable %}
+     {{ paginate(pager,"mensajeria_encuestas") }}
+    {% endif %}
+</article>

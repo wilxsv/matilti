@@ -1,0 +1,7 @@
+parameters:
+#    reporteria.example.class: matilti\reporteriaBundle\Example
+
+services:
+#    reporteria.example:
+#        class: %reporteria.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

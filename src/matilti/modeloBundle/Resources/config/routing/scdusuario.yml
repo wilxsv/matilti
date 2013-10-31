@@ -1,0 +1,30 @@
+admin_usuario:
+    pattern:  /
+    defaults: { _controller: "modeloBundle:ScdUsuario:index" }
+
+admin_usuario_show:
+    pattern:  /show
+    defaults: { _controller: "modeloBundle:ScdUsuario:show" }
+
+admin_usuario_new:
+    pattern:  /new
+    defaults: { _controller: "modeloBundle:ScdUsuario:new" }
+
+admin_usuario_create:
+    pattern:  /create
+    defaults: { _controller: "modeloBundle:ScdUsuario:create" }
+    requirements: { _method: post }
+
+admin_usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "modeloBundle:ScdUsuario:edit" }
+
+admin_usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "modeloBundle:ScdUsuario:update" }
+    requirements: { _method: post }
+
+admin_usuario_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "modeloBundle:ScdUsuario:delete" }
+    requirements: { _method: post }

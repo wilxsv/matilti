@@ -1,0 +1,54 @@
+matilti\modeloBundle\Entity\ScdDenuncia:
+  type: entity
+  table: scd_denuncia
+  repositoryClass: matilti\modeloBundle\Repository\ScdDenunciaRepository
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    mensajedenuncia:
+      type: string
+      length: 160
+      fixed: false
+      nullable: false
+    fechahorainicio:
+      type: datetime
+      nullable: false
+    fechahorafin:
+      type: datetime
+      nullable: true
+    denunciaactiva:
+      type: decimal
+      nullable: false
+  oneToOne:
+    denuncia:
+      targetEntity: ScdDenuncia
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        denuncia_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    usuario:
+      targetEntity: ScdUsuario
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        usuario_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    entidad:
+      targetEntity: ScdEntidad
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        entidad_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

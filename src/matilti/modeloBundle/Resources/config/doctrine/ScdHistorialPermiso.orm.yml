@@ -1,0 +1,33 @@
+matilti\modeloBundle\Entity\ScdHistorialPermiso:
+  type: entity
+  table: scd_historial_permiso
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    finhisrol:
+      type: datetime
+      nullable: false
+  oneToOne:
+    rol:
+      targetEntity: ScdRol
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        rol_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    usuario:
+      targetEntity: ScdUsuario
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        usuario_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

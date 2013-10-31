@@ -1,0 +1,33 @@
+matilti\modeloBundle\Entity\OutboxMultipart:
+  type: entity
+  table: outbox_multipart
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+    sequenceposition:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+    text:
+      type: text
+      nullable: true
+    coding:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    udh:
+      type: text
+      nullable: true
+    class:
+      type: integer
+      unsigned: false
+      nullable: true
+    textdecoded:
+      type: text
+      nullable: true
+  lifecycleCallbacks: {  }

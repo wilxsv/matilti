@@ -1,0 +1,105 @@
+{% extends 'mensajeriaBundle::default.html.twig' %}
+{% block css %}
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/basic.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/visualize.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/visualize-light.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/validationEngine.jquery.css') }}" type="text/css" />
+{% endblock %}
+{% block js %}
+<script src="{{ asset('bundles/matiltimensajeria/js/jquery.validationEngine-es.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('bundles/matiltimensajeria/js/jquery.validationEngine.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('bundles/matiltimensajeria/js/visualize.jQuery.js') }}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  jQuery.fn.reset = function () { $(this).each (function() { this.reset(); }); }
+  function cleanForm(){ $("#formConsultar").reset(); }
+  $(document).ready(
+	function(){
+	  $("form").submit(function(){
+	  if (!$("#formConsultar").validationEngine('validate'))
+	  {return false;}
+	  $("#load").dialog({ autoOpen: true });
+	   $.ajax({
+	    type: 'POST',
+	    url: $(this).attr('action'),
+	    data: $(this).serialize(),
+	    error: function(data){
+	    $("#load").dialog('close');
+	    $("#error").dialog({ autoOpen: true, modal: true });
+	    },
+	    success: function(data) {
+	     $("#datos").html(data);
+	     $("#formConsultar").each (function(){ this.reset(); });
+	     $("#error").dialog('close');
+	     $("#load").dialog('close');
+	     $( "#ok" ).dialog({ autoOpen: true });
+	     graficar();
+	    }
+   	    });
+	    $("#load").dialog('close');
+	    return false;
+  });});
+ </script>
+<script>
+  $(document).ready(function() {
+   $( "#error" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#ok" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#load" ).dialog({ autoOpen: false });
+   $( "#enviar" ).dialog({ autoOpen: false });
+   $("#formConsultar").validationEngine();
+  });
+ </script>
+<script >
+function graficar(){
+	$("article div").remove();
+	$("#datos").visualize({height:'90px'});
+}
+</script>
+{% endblock %}
+{% block contenido %}
+<div class="wrapper">
+
+<section id="content">
+	<h2>Resultados <span>Encuestas</span></h2>
+<article>
+<table class="visualize" cellspacing="0" id="datos" style="height:40px;">
+     <thead>
+      <tr>
+      
+      </tr>
+     </thead>
+     <tbody>
+       <tr>
+
+       </tr>
+     </tbody>
+    </table>
+</article>
+</section>
+<div id="error">
+  <img src="{{ asset('bundles/matiltimensajeria/images/information.png') }}" height="32" width="32" /><b>Error</b><br />
+  Algo inesperado ha ocurrido, intente nuevamente.
+  </div>
+ <div id="load"><img src="{{ asset('bundles/matiltimensajeria/images/load.png') }}" /></div>
+ <div id="ok"><img src="{{ asset('bundles/matiltimensajeria/images/Ok-icon.png') }}" height="32" width="32" />Datos cargados exitosamente.</div>
+ <div id="enviar">
+  <p><img src="{{ asset('bundles/matiltimensajeria/images/twitter-facebook.png') }}" height="32" width="32" />Este mensaje sera publicado <br /><b>¿Está seguro de hacerlo?</b></p>
+ </div>
+ 
+{% endblock %}
+{% block aside %}
+	<aside>
+	<h2>Consulta de <span>Encuestas</span></h2>
+	
+	<form action="{{ path('mensajeria_encuestar_consulta') }}" method="post" {{ form_enctype(formConsultar) }} id="formConsultar">
+	
+	{{ form_label(formConsultar.encuesta) }}
+   	{{ form_errors(formConsultar.encuesta) }}
+    	{{ form_widget(formConsultar.encuesta, { 'attr': {'class': 'validate[required]'} }) }}
+    	{{ form_rest(formConsultar) }}
+
+	<br>
+	    <input type="submit" value="Consultar"/>
+	</form>
+	</aside>
+</div>
+{% endblock %}

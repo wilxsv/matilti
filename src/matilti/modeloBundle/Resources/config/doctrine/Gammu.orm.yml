@@ -1,0 +1,15 @@
+matilti\modeloBundle\Entity\Gammu:
+  type: entity
+  table: gammu
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    version:
+      type: smallint
+      nullable: false
+  lifecycleCallbacks: {  }

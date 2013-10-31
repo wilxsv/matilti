@@ -1,0 +1,186 @@
+{% extends '::admin.html.twig' %}
+{% block js %}
+ <script type="text/javascript">
+  /*Funcion que limpia los campos del formulario y errores de validacion*/
+  jQuery.fn.reset = function () { $(this).each (function() { this.reset(); }); }
+  function cleanForm(){ $("#nuevo").reset(); }
+ /*Funcion que agrega un registro*/
+ function crear(strForm, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $(strForm).submit(function() {
+   $.ajax({
+    type: 'POST',
+    url: $(this).attr('action'),
+    data: $(this).serialize(),
+    error: function(data){
+    $("#load").dialog('close');
+    $("#error").dialog({ autoOpen: true, modal: true });
+    },
+    success: function(data) {
+     $(strDivGrid).html(data);
+     $(strForm).each (function(){ this.reset(); });
+     $("#error").dialog('close');
+     $("#load").dialog('close');
+     $( "#ok" ).dialog({ autoOpen: true });
+    }
+   });
+   $("#load").dialog('close');
+   return false;
+  });
+ }
+ /*Funcion que elimina un registro*/
+ function borrar(url_v, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $("#delete").dialog({
+   autoOpen: true,
+   resizable: false,
+   height:200,
+   width: 400,
+   modal: true,
+   buttons: { 
+    "Eliminar registro": function() {
+     $("#delete").dialog( "close" );
+     $.ajax({
+      type: 'POST',
+      url: url_v,
+      data: $(this).serialize(),
+      error: function(data){
+       $("#load").dialog('close');
+       $("#error").dialog({ autoOpen: true, modal: true });
+      },
+      success: function(data) {
+       $(strDivGrid).html(data);
+       $("#error").dialog('close');
+       $("#load").dialog('close');
+       $( "#ok" ).dialog({ autoOpen: true });
+      }
+     });
+    },
+    Cancel: function() {
+     $("#delete").dialog( "close" );
+    }
+   }
+  });
+  $("#load").dialog('close');
+  return false;
+ }
+ /*Funcion que muestra un registro a editar*/
+ function editar(url_v, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $.ajax({
+   type: 'POST',
+   url: url_v,
+   data: $(this).serialize(),
+   error: function(data){
+    $("#load").dialog('close');
+    $("#error").dialog({ autoOpen: true, modal: true });
+   },
+   success: function(data) {
+    $(strDivGrid).html(data);
+    $("#error").dialog('close');
+    $("#load").dialog('close');
+   }
+  });
+  $("#load").dialog('close');
+  return false;
+ }
+ /*Funcion que actualiza un registro*/
+ function actualizar(strForm, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $(strForm).submit(function() {
+   $.ajax({
+    type: 'POST',
+    url: $(this).attr('action'),
+    data: $(this).serialize(),
+    error: function(data){
+    $("#load").dialog('close');
+    $("#error").dialog({ autoOpen: true, modal: true });
+    },
+    success: function(data) {
+     $(strDivGrid).html(data);
+     $(strForm).each (function(){ this.reset(); });
+     $("#error").dialog('close');
+     $("#load").dialog('close');
+     $( "#ok" ).dialog({ autoOpen: true });
+    }
+   });
+   $("#load").dialog('close');
+   return false;
+  });
+ }
+ </script>
+ <script>
+ $(document).ready(function() {
+   $( "#error" ).dialog({ autoOpen: false });
+   $( "#ok" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#load" ).dialog({ autoOpen: false });
+   $( "#delete" ).dialog({ autoOpen: false });
+  });
+ </script>
+{% endblock %}
+{% block marco %}
+ <article class="module width_3_quarter" id="listado">
+  <header>
+   <h3 class="tabs_involved">Listado de entidades</h3>
+   <ul class="tabs">
+    <li><a href="#tab1">Primeras</a></li>
+    <li><a href="#tab2">Ultimas</a></li>
+   </ul>
+  </header>
+  <div class="tab_container">
+   <div id="tab1" class="tab_content">
+    <table class="tablesorter" cellspacing="0">
+     <thead>
+      <tr>
+       <th></th>
+       <th>Nombre</th>
+       <th>Localidad</th>
+       <th>Acciones</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for item in pager.getResults %}
+       <tr>
+        <td><input type="checkbox"></td>
+        <td>{{ item.nombreentidad }}</td>
+        <td>{{ item.localidad.nombrelocalidad }}</td>
+        <td>
+         <input type="image" src="{{ asset('images/template/icn_edit.png') }}" title="Editar" onclick="editar('{{ path('admin_entidad_edit', { 'id': item.id }) }}', '#form')"/>
+         <input type="image" src="{{ asset('images/template/icn_trash.png') }}" title="Borrar" onclick="borrar('{{ path('admin_entidad_delete', { 'id': item.id }) }}', '#listado')"/>
+        </td>
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    {% if pager.isPaginable %}
+     {{ paginate(pager,"admin_entidad") }}
+    {% endif %}
+   </div><!-- end of #tab1 -->
+   <div id="tab2" class="tab_content">
+  </div><!-- end of #tab2 -->
+ </div><!-- end of .tab_container -->
+ </article><!-- end of content manager article -->
+ <article class="module width_quarter" id="form">
+  <header><h3>Agregar Entidad</h3></header>
+  <form action="{{ path('admin_entidad_create') }}" method="post" {{ form_enctype(form) }} id="nuevo">
+   <div class="module_content">
+    {{ form_widget(form) }}
+   </div>
+   <footer>
+    <div class="submit_link">
+     <input type="submit" value="Crear" class="alt_btn" onclick="crear('#nuevo', '#listado')">
+     <input type="reset" value="Borrar" onclick="cleanForm();">
+    </div>
+   </footer>
+  </form>
+ </article><!-- end of messages article -->
+ <div id="error" title="Estado de registro">
+  <img src="{{ asset('images/etc/process-stop.png') }}" /><b>Error al procesar el registro</b><br />
+  Por favor, verifique los datos e intente nuevamente.
+  </div>
+ <div id="load" title="Estado :: "><img src="{{ asset('images/etc/load.png') }}" /></div>
+ <div id="ok" title="Estado de registro"><img src="{{ asset('images/etc/accessories-text-editor.png') }}" height="32" width="32" />Registro procesado con exito.</div>
+ <div id="delete" title="Eliminar registro ::">
+  <p><img src="{{ asset('images/etc/edit-clear.png') }}" height="32" width="32" />Este registro se eliminará permanentemente. <br /><b>¿Está seguro de hacerlo?</b></p>
+ </div>
+{% endblock %}

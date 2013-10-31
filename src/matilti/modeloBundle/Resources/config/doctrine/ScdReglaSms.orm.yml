@@ -1,0 +1,52 @@
+matilti\modeloBundle\Entity\ScdReglaSms:
+  type: entity
+  table: scd_regla_sms
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    nombreregla:
+      type: string
+      length: 75
+      fixed: false
+      nullable: false
+    prefijoregla:
+      type: string
+      length: 10
+      fixed: false
+      nullable: false
+    inicioregla:
+      type: datetime
+      nullable: false
+    finregla:
+      type: datetime
+      nullable: false
+    registroregla:
+      type: datetime
+      nullable: false
+    descripcionregla:
+      type: string
+      length: 250
+      fixed: false
+      nullable: true
+  manyToMany:
+    rol:
+      targetEntity: ScdRol
+      cascade: {  }
+      mappedBy: null
+      inversedBy: regla
+      joinTable:
+        name: scd_regla_rol
+        joinColumns:
+          -
+            name: regla_id
+            referencedColumnName: id
+        inverseJoinColumns:
+          -
+            name: rol_id
+            referencedColumnName: id
+      orderBy: null
+  lifecycleCallbacks: {  }

@@ -1,0 +1,50 @@
+matilti\modeloBundle\Entity\Phones:
+  type: entity
+  table: phones
+  fields:
+    imei:
+      id: true
+      type: string
+      length: 35
+      fixed: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    id:
+      type: text
+      nullable: false
+    updatedindb:
+      type: datetime
+      nullable: false
+    insertintodb:
+      type: datetime
+      nullable: false
+    timeout:
+      type: datetime
+      nullable: false
+    send:
+      type: boolean
+      nullable: false
+    receive:
+      type: boolean
+      nullable: false
+    client:
+      type: text
+      nullable: false
+    battery:
+      type: integer
+      unsigned: false
+      nullable: false
+    signal:
+      type: integer
+      unsigned: false
+      nullable: false
+    sent:
+      type: integer
+      unsigned: false
+      nullable: false
+    received:
+      type: integer
+      unsigned: false
+      nullable: false
+  lifecycleCallbacks: {  }

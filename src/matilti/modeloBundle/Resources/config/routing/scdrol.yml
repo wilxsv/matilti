@@ -1,0 +1,30 @@
+admin_rol:
+    pattern:  /
+    defaults: { _controller: modeloBundle:ScdRol:index}
+
+admin_rol_show:
+    pattern:  /show
+    defaults: { _controller: "modeloBundle:ScdRol:show" }
+
+admin_rol_new:
+    pattern:  /new
+    defaults: { _controller: "modeloBundle:ScdRol:new" }
+
+admin_rol_create:
+    pattern:  /create
+    defaults: { _controller: "modeloBundle:ScdRol:create" }
+    requirements: { _method: post }
+
+admin_rol_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "modeloBundle:ScdRol:edit" }
+
+admin_rol_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "modeloBundle:ScdRol:update" }
+    requirements: { _method: post }
+
+admin_rol_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "modeloBundle:ScdRol:delete" }
+    requirements: { _method: post }

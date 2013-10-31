@@ -1,0 +1,9 @@
+usuarioBundle_homepage:
+    pattern:  /login
+    defaults: { _controller: usuarioBundle:Default:login }
+    
+_security_check:
+    pattern:  /login_check
+    
+_security_logout:
+    pattern:  /logout

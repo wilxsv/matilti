@@ -1,0 +1,92 @@
+{% extends '::admin.html.twig' %}
+{% block js %}
+ <script src="{{ asset('js/jquery-ui-timepicker-addon.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block marco %}
+<br /><br /><br /><br /><br />
+ <article class="module width_3_quarter" id="listado">
+  <header>
+   <h3 class="tabs_involved">Listado de reglas aplicables a sms</h3>
+   <ul class="tabs">
+    <li><a href="#tab1">Primeros</a></li>
+    <li><a href="#tab2">Ultimos</a></li>
+   </ul>
+  </header>
+  <div class="tab_container">
+   <div id="tab1" class="tab_content">
+    <table class="tablesorter" cellspacing="0">
+     <thead>
+      <tr>
+       <th></th>
+       <th>Nombre</th>
+       <th>Prefijo</th>
+       <th>Inicio</th>
+       <th>Fin</th>
+       <th>Acciones</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for item in pager.getResults %}
+       <tr>
+        <td><input type="checkbox"></td>
+        <td>{{ item.nombreregla }}</td>
+        <td>{{ item.prefijoregla }}</td>
+        <td>{{ item.inicioregla|date('Y-m-d') }}</td>
+        <td>{{ item.finregla|date('Y-m-d H:i:s') }}</td>
+        <td>
+         <input type="image" src="{{ asset('images/template/icn_edit.png') }}" title="Editar" onclick="editar('{{ path('admin_regla_edit', { 'id': item.id }) }}', '#form')"/>
+         <input type="image" src="{{ asset('images/template/icn_trash.png') }}" title="Borrar" onclick="borrar('{{ path('admin_regla_delete', { 'id': item.id }) }}', '#listado')"/>
+        </td>
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    {% if pager.isPaginable %}
+     {{ paginate(pager,"admin_regla") }}
+    {% endif %}
+   </div><!-- end of #tab1 -->
+   <div id="tab2" class="tab_content">
+  </div><!-- end of #tab2 -->
+ </div><!-- end of .tab_container -->
+ </article><!-- end of content manager article -->
+ <article class="module width_quarter" id="form">
+  <header><h3>Agregar regla</h3></header>
+  {% block crud %}
+   <script>
+	$(function() {
+		$( "#matilti_modelobundle_scdreglasmstype_inicioregla" ).datetimepicker({
+			showSecond: true,
+			timeFormat: 'hh:mm:ss',
+			numberOfMonths: 3,
+			dateFormat: 'yy-mm-dd',
+			minDate:  new Date(),
+			showButtonPanel: true
+		});
+	});
+	</script>
+ <script>
+	$(function() {
+		$( "#matilti_modelobundle_scdreglasmstype_finregla" ).datetimepicker({
+			showSecond: true,
+			timeFormat: 'hh:mm:ss',
+			numberOfMonths: 3,
+			dateFormat: 'yy-mm-dd',
+			minDate:  new Date(),
+			showButtonPanel: true
+		});
+	});
+	</script>
+  {% endblock %}
+  <form action="{{ path('admin_regla_create') }}" method="post" {{ form_enctype(form) }} id="nuevo">
+   <div class="module_content">
+    {{ form_widget(form) }}
+   </div>
+   <footer>
+    <div class="submit_link">
+     <input type="submit" value="Crear" class="alt_btn" onclick="crear('#nuevo', '#listado')">
+     <input type="reset" value="Borrar" onclick="cleanForm();">
+    </div>
+   </footer>
+  </form>
+ </article><!-- end of messages article -->
+{% endblock %}

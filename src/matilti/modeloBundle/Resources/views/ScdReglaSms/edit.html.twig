@@ -1,0 +1,40 @@
+<header><h3>Editar regla</h3></header>
+<form action="{{ path('admin_regla_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} id="nuevo">
+ <div class="module_content">
+  {{ form_widget(edit_form) }}
+ </div>
+ <footer>
+  <div class="submit_link">
+   <input type="submit" value="Actualizar" class="alt_btn" onclick="actualizar('#nuevo', '#listado')">
+   <input type="reset" value="Restablecer" onclick="cleanForm();">
+  </div>
+ </footer>
+</form>
+{% block crud %}
+   <script>
+	$(function() {
+		$( "#matilti_modelobundle_scdreglasmstype_inicioregla" ).datetimepicker({
+			showSecond: true,
+			timeFormat: 'hh:mm:ss',
+			setDate: '{{ entity.inicioregla|date('Y-m-d h:m:s') }}',
+			numberOfMonths: 3,
+			dateFormat: 'yy-mm-dd',
+			minDate:  new Date(),
+			showButtonPanel: true
+		});
+	});
+	</script>
+ <script>
+	$(function() {
+		$( "#matilti_modelobundle_scdreglasmstype_finregla" ).datetimepicker({
+			showSecond: true,
+			timeFormat: 'hh:mm:ss',
+			setDate: '{{ entity.finregla|date('Y-m-d h:m:s') }}',
+			numberOfMonths: 3,
+			dateFormat: 'yy-mm-dd',
+			minDate:  new Date(),
+			showButtonPanel: true
+		});
+	});
+	</script>
+{% endblock %}

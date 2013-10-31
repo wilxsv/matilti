@@ -1,0 +1,67 @@
+matilti\modeloBundle\Entity\Outbox:
+  type: entity
+  table: outbox
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    updatedindb:
+      type: datetime
+      nullable: false
+    insertintodb:
+      type: datetime
+      nullable: false
+    sendingdatetime:
+      type: datetime
+      nullable: false
+    text:
+      type: text
+      nullable: true
+    destinationnumber:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    coding:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    udh:
+      type: text
+      nullable: true
+    class:
+      type: integer
+      unsigned: false
+      nullable: true
+    textdecoded:
+      type: text
+      nullable: false
+    multipart:
+      type: boolean
+      nullable: false
+    relativevalidity:
+      type: integer
+      unsigned: false
+      nullable: true
+    senderid:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    sendingtimeout:
+      type: datetime
+      nullable: false
+    deliveryreport:
+      type: string
+      length: 10
+      fixed: false
+      nullable: true
+    creatorid:
+      type: text
+      nullable: false
+  lifecycleCallbacks: {  }

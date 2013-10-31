@@ -1,0 +1,52 @@
+matilti\modeloBundle\Entity\Inbox:
+  type: entity
+  table: inbox
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    updatedindb:
+      type: datetime
+      nullable: false
+    receivingdatetime:
+      type: datetime
+      nullable: false
+    text:
+      type: text
+      nullable: false
+    sendernumber:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    coding:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    udh:
+      type: text
+      nullable: false
+    smscnumber:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    class:
+      type: integer
+      unsigned: false
+      nullable: false
+    textdecoded:
+      type: text
+      nullable: false
+    recipientid:
+      type: text
+      nullable: false
+    processed:
+      type: boolean
+      nullable: false
+  lifecycleCallbacks: {  }

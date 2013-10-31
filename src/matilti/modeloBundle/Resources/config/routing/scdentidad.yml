@@ -1,0 +1,30 @@
+admin_entidad:
+    pattern:  /
+    defaults: { _controller: modeloBundle:ScdEntidad:index}
+
+admin_entidad_show:
+    pattern:  /show
+    defaults: { _controller: "modeloBundle:ScdEntidad:show" }
+
+admin_entidad_new:
+    pattern:  /new
+    defaults: { _controller: "modeloBundle:ScdEntidad:new" }
+
+admin_entidad_create:
+    pattern:  /create
+    defaults: { _controller: "modeloBundle:ScdEntidad:create" }
+    requirements: { _method: post }
+
+admin_entidad_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "modeloBundle:ScdEntidad:edit" }
+
+admin_entidad_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "modeloBundle:ScdEntidad:update" }
+    requirements: { _method: post }
+
+admin_entidad_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "modeloBundle:ScdEntidad:delete" }
+    requirements: { _method: post }

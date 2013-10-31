@@ -1,0 +1,120 @@
+{% extends 'mensajeriaBundle::default.html.twig' %}
+{% block css %}
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/basicM.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/visualizeM.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/paginacion.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/validationEngine.jquery.css') }}" type="text/css" />
+{% endblock %}
+{% block js %}
+<script src="{{ asset('bundles/matiltimensajeria/js/jquery.validationEngine-es.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('bundles/matiltimensajeria/js/jquery.validationEngine.js') }}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+ $(document).ready(
+	function(){
+		$("form").submit(function(){
+		if (!$('#formEncuestar').validationEngine('validate'))
+		{return false;}
+		$("#load").dialog({ autoOpen: true });
+		$.ajax({
+		type: 'POST',
+		url: $(this).attr('action'),
+		data: $(this).serialize(),
+		error: function(data){
+		$("#load").dialog('close');
+		$("#error").dialog({ autoOpen: true, modal: true });
+		},
+		success: function(data) {
+		$("#content").html(data);
+		$('#formEncuestar').each (function(){ this.reset(); });
+		$("#error").dialog('close');
+		$("#load").dialog('close');
+		$( "#ok" ).dialog({ autoOpen: true });
+		}
+		});
+		$("#load").dialog('close');
+		return false;
+	});
+	}
+ );
+</script>
+<script>
+  $(document).ready(function() {
+   $( "#error" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#ok" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#load" ).dialog({ autoOpen: false });
+   $( "#enviar" ).dialog({ autoOpen: false });
+   $("#formEncuestar").validationEngine();
+   
+  });
+ </script>
+{% endblock %}
+{% block contenido %}
+<div class="wrapper">
+<section id="content">
+	<h2>Encuestas <span>Enviadas</span></h2>
+<article>
+<table class="visualize" cellspacing="0">
+     <thead>
+      <tr>
+       <th style="width:50%">Encuesta</th>
+       <th>Respuestas</th>
+       <th>Fecha / Hora Inicio</th>
+       <th>Fecha / Hora Fin</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for item in pager.getResults %}
+       <tr>
+        <td>{{ item.mensajeencuesta }}</td>
+        <td>{{ item.respuestasencuesta }}</td>
+        <td>{{ item.fechahorainicio|date("Y/m/d H:i:s") }}</td>
+	<td>{{ item.fechahorafin|date("Y/m/d H:i:s") }}</td>
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    {% if pager.isPaginable %}
+     {{ paginate(pager,"mensajeria_encuestas") }}
+    {% endif %}
+</article>
+</section>
+ <div id="error" title="Envio de Encuestas">
+  <img src="{{ asset('bundles/matiltimensajeria/images/information.png') }}" height="32" width="32" /><b>Error</b><br />
+  Algo inesperado ha ocurrido, verifique los datos e intente nuevamente.
+  </div>
+ <div id="load" title="Envio de Encuestas"><img src="{{ asset('bundles/matiltimensajeria/images/load.png') }}" /></div>
+ <div id="ok" title="Envio de Encuestas"><img src="{{ asset('bundles/matiltimensajeria/images/Ok-icon.png') }}" height="32" width="32" />Encuesta enviada exitosamente.</div>
+{% endblock %}
+{% block aside %}
+	<aside>
+	<h2>Envio de <span>Encuestas</span></h2>
+	
+	<form action="{{ path('mensajeria_encuestar') }}" method="post" {{ form_enctype(formEncuestar) }} id="formEncuestar" >
+    		
+		{{ form_label(formEncuestar.pregunta) }}
+		{{ form_errors(formEncuestar.pregunta) }}
+		{{ form_widget(formEncuestar.pregunta, { 'attr': {'class': 'validate[required,maxSize[160]]'} }) }}
+		Ingrese las respuestas esperadas, separadas por comas (,):
+		{{ form_errors(formEncuestar.respuestas) }}
+		{{ form_widget(formEncuestar.respuestas, { 'attr': {'class': 'validate[required]'} }) }}
+		
+		{{ form_label(formEncuestar.localidad) }}
+		{{ form_errors(formEncuestar.localidad) }}
+		{{ form_widget(formEncuestar.localidad, { 'attr': {'class': 'validate[required]'} }) }}
+		{{ form_label(formEncuestar.minEdad) }}
+		{{ form_errors(formEncuestar.minEdad) }}
+		{{ form_widget(formEncuestar.minEdad, { 'attr': {'class': 'validate[required,max[98],min[1]]'} }) }}
+		{{ form_label(formEncuestar.maxEdad) }}
+		{{ form_errors(formEncuestar.maxEdad) }}
+		{{ form_widget(formEncuestar.maxEdad, { 'attr': {'class': 'validate[required,max[99],min[2]]'} }) }}
+		{{ form_label(formEncuestar.genero) }}
+		{{ form_errors(formEncuestar.genero) }}
+		{{ form_widget(formEncuestar.genero, { 'attr': {'class': 'validate[required]'} }) }}
+		
+		{{ form_rest(formEncuestar) }}
+	
+    	<input type="submit" value="Enviar"/><input type="reset" value="Limpiar"/> 
+	</form>
+	</aside>
+</div>
+{% endblock %}

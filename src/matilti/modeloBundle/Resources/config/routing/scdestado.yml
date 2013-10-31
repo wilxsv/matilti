@@ -1,0 +1,30 @@
+admin_estado:
+    pattern:  /
+    defaults: { _controller: "modeloBundle:ScdEstado:index" }
+
+admin_estado_show:
+    pattern:  /show
+    defaults: { _controller: "modeloBundle:ScdEstado:show" }
+
+admin_estado_new:
+    pattern:  /new
+    defaults: { _controller: "modeloBundle:ScdEstado:new" }
+
+admin_estado_create:
+    pattern:  /create
+    defaults: { _controller: "modeloBundle:ScdEstado:create" }
+    requirements: { _method: post }
+
+admin_estado_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "modeloBundle:ScdEstado:edit" }
+
+admin_estado_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "modeloBundle:ScdEstado:update" }
+    requirements: { _method: post }
+
+admin_estado_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "modeloBundle:ScdEstado:delete" }
+    requirements: { _method: post }

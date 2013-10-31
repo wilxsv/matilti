@@ -1,0 +1,22 @@
+matilti\modeloBundle\Entity\Pbk:
+  type: entity
+  table: pbk
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    groupid:
+      type: integer
+      unsigned: false
+      nullable: false
+    name:
+      type: text
+      nullable: false
+    number:
+      type: text
+      nullable: false
+  lifecycleCallbacks: {  }

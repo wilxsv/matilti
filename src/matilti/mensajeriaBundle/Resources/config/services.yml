@@ -1,0 +1,23 @@
+#parameters:
+#    matilti_mensajeria.example.class: Matilti\MensajeriaBundle\Example
+
+#    matilti_mensajeria.example:
+#        class: %matilti_mensajeria.example.class%/DependencyInjection
+#        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    envio_mensajes:
+        class:       matilti\mensajeriaBundle\Services\EnvioMensaje
+        arguments: 
+                  entityManager: "@doctrine.orm.entity_manager"
+                  serviceContainer: "@service_container"
+    
+    publicacion_mensajes:
+        class:        matilti\mensajeriaBundle\Services\PublicacionMensaje
+        arguments: 
+                  entityManager: "@doctrine.orm.entity_manager"
+
+    registro_historial:
+        class:        matilti\mensajeriaBundle\Services\RegistroHistorial
+        arguments: 
+                  entityManager: "@doctrine.orm.entity_manager"
+

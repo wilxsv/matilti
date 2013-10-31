@@ -1,0 +1,39 @@
+matilti\modeloBundle\Entity\ScdRecibido:
+  type: entity
+  table: scd_recibido
+  repositoryClass: matilti\modeloBundle\Repository\ScdRecibidoRepository
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    mensajerecibido:
+      type: string
+      length: 160
+      fixed: false
+      nullable: false
+    fechahorarecibido:
+      type: datetime
+      nullable: false
+  oneToOne:
+    regla:
+      targetEntity: ScdReglaSms
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        regla_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    usuario:
+      targetEntity: ScdUsuario
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        usuario_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

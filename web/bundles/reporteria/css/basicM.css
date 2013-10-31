@@ -1,0 +1,16 @@
+/* page styles 
+body { font-family: "Segoe UI", Frutiger,Tahoma,Helvetica,"Helvetica Neue", Arial, sans-serif; }*/
+table { width: 90%; height: 100%; margin-left: 30px; border-collapse: collapse; }
+td, th { 
+   text-align: center; 
+   border: 1px solid #ddd; 
+   padding:2px 5px; 
+   font-size: 1.3em;
+   }
+   
+caption {margin: 0 0 .5em; font-weight: bold; }
+
+.visualize { border: 0px solid #ddd; position: relative; background: #fafafa; }
+.visualize canvas { position: absolute; }
+.visualize ul,.visualize li { margin: 0; padding: 0;}
+

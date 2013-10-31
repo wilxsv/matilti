@@ -1,0 +1,36 @@
+_welcome:
+    pattern:  /home
+    defaults: { _controller: usuarioBundle:Default:publico }
+home:
+    pattern:  /
+    defaults: { _controller: usuarioBundle:Default:publico }
+
+modeloBundle:
+    resource: "@modeloBundle/Resources/config/routing.yml"
+    prefix:   /
+
+smsBundle:
+    resource: "@smsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+usuarioBundle:
+    resource: "@usuarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reporteriaBundle:
+    resource: "@reporteriaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mensajeriaBundle:
+    resource: "@mensajeriaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+_besimple_soap:
+    resource: "@BeSimpleSoapBundle/Resources/config/routing/webservicecontroller.xml"
+    prefix:   /ws
+
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

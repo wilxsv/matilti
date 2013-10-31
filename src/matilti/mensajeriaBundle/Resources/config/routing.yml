@@ -1,0 +1,54 @@
+mensajeria:
+    pattern:  /mensajeria
+    defaults: { _controller: mensajeriaBundle:Mensajeria:index }
+
+mensajeria_enviados:
+    pattern:  /mensajeria/enviados
+    defaults: { _controller: mensajeriaBundle:Mensajeria:listarEnviados }
+
+mensajeria_recibidos:
+    pattern:  /mensajeria/recibidos
+    defaults: { _controller: mensajeriaBundle:Mensajeria:listarRecibidos }
+
+mensajeria_encuestas:
+    pattern:  /mensajeria/encuestas
+    defaults: { _controller: mensajeriaBundle:Mensajeria:listarEncuestas }
+
+#mensajeria_ws:
+#    pattern:  /mensajeria/ws/{xml}
+#    defaults: { _controller: mensajeriaBundle:Mensajeria:ws }
+
+mensajeria_enviar:
+    pattern:  /mensajeria/enviar
+    defaults: { _controller: mensajeriaBundle:Mensajeria:enviarMensaje }
+    requirements:
+        _method:  POST
+
+mensajeria_contestar:
+    pattern:  /mensajeria/contestar/{id}
+    defaults: { _controller: mensajeriaBundle:Mensajeria:contestarMensaje }
+    requirements:
+        _method:  POST
+
+mensajeria_publicar:
+    pattern:  /mensajeria/publicar/{id}
+    defaults: { _controller: mensajeriaBundle:Mensajeria:publicarMensaje }
+    requirements:
+        _method:  POST
+
+mensajeria_encuestar:
+    pattern:  /mensajeria/encuestar
+    defaults: { _controller: mensajeriaBundle:Mensajeria:enviarEncuesta }
+    requirements:
+        _method:  POST
+
+mensajeria_consultar:
+    pattern:  /mensajeria/consultar
+    defaults: { _controller: mensajeriaBundle:Mensajeria:listarConsultas }
+
+mensajeria_encuestar_consulta:
+    pattern:  /mensajeria/consultarEncuesta
+    defaults: { _controller: mensajeriaBundle:Mensajeria:consultarEncuesta }
+    requirements:
+        _method:  POST
+

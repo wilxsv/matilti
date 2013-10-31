@@ -1,0 +1,31 @@
+matilti\modeloBundle\Entity\ScdEncuesta:
+  type: entity
+  table: scd_encuesta
+  repositoryClass: matilti\modeloBundle\Repository\ScdEncuestaRepository
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    mensajeencuesta:
+      type: string
+      length: 160
+      fixed: false
+      nullable: false
+    respuestasencuesta:
+      type: string
+      length: null
+      fixed: false
+      nullable: false
+    fechahorainicio:
+      type: datetime
+      nullable: false
+    fechahorafin:
+      type: datetime
+      nullable: true
+    encuestaactiva:
+      type: decimal
+      nullable: false
+  lifecycleCallbacks: {  }

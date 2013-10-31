@@ -1,0 +1,70 @@
+{% extends '::admin.html.twig' %}
+{% block marco %}
+ <article class="module width_3_quarter" id="listado">
+  <header>
+   <h3 class="tabs_involved">Usuarios registrados</h3>
+   <ul class="tabs">
+    <li><a href="#tab1">Primeros</a></li>
+    <li><a href="#tab2">Ultimos</a></li>
+   </ul>
+  </header>
+  <div class="tab_container">
+   <div id="tab1" class="tab_content">
+    <table class="tablesorter" cellspacing="0">
+     <thead>
+      <tr>
+       <th></th>
+       <th>Usuario</th>
+       <th>Teléfono</th><!--
+       <th>Edad</th>
+       <th>Correo</th>
+       <th>Image</th>
+       <th>Sexo</th>-->
+       <th>Estado</th>
+       <th>Visita</th>
+       <th>Acciones</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for item in pager.getResults %}
+       <tr>
+        <td><input type="checkbox"></td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.telefonousuario }}</td><!--
+        <td>{% if item.nacimientousuario %}{{ item.nacimientousuario |date('Y-m-d') }}{% endif%}</td>
+        <td>{{ item.sexousuario }}</td>
+        <td>{{ item.correousuario }}</td>
+        <td>{{ item.imagenusuario }}</td>-->
+        <td>{{ item.estado }}</td>
+        <td>{% if item.ultimavisitausuario %}{{ item.ultimavisitausuario|date('Y-m-d H:i:s') }}{% endif%}</td>
+        <td>
+         <input type="image" src="{{ asset('images/template/icn_edit.png') }}" title="Editar" onclick="editar('{{ path('admin_usuario_edit', { 'id': item.id }) }}', '#form')"/>
+         <input type="image" src="{{ asset('images/template/icn_trash.png') }}" title="Borrar" onclick="borrar('{{ path('admin_usuario_delete', { 'id': item.id }) }}', '#listado')"/>
+        </td>
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    {% if pager.isPaginable %}
+     {{ paginate(pager,"admin_usuario") }}
+    {% endif %}
+   </div><!-- end of #tab1 -->
+   <div id="tab2" class="tab_content">
+  </div><!-- end of #tab2 -->
+ </div><!-- end of .tab_container -->
+ </article><!-- end of content manager article -->
+ <article class="module width_quarter" id="form">
+  <header><h3>Agregar usuario</h3></header>
+  <form action="{{ path('admin_usuario_create') }}" method="post" {{ form_enctype(form) }} id="nuevo">
+   <div class="module_content">
+    {{ form_widget(form) }}
+   </div>
+   <footer>
+    <div class="submit_link">
+     <input type="submit" value="Crear" class="alt_btn" onclick="crear('#nuevo', '#listado')">
+     <input type="reset" value="Borrar" onclick="cleanForm();">
+    </div>
+   </footer>
+  </form>
+ </article><!-- end of messages article -->
+{% endblock %}

@@ -1,0 +1,15 @@
+<caption>Resultados (%)</caption>     
+<thead>
+      <tr>
+	 {% for r in respuestas %}
+       <th scope="col">{{r}}</th>
+	 {% endfor %}
+      </tr>
+     </thead>
+     <tbody>
+       <tr>
+	{% for r in respuestas %}
+        <td>{{porcentajesRespuestas[r]}}</td>
+        {% endfor %}
+       </tr>
+     </tbody> 

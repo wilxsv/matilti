@@ -1,0 +1,12 @@
+<header><h3>Modificar estado</h3></header>
+<form action="{{ path('admin_estado_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} id="nuevo">
+ <div class="module_content">
+  {{ form_widget(edit_form) }}
+ </div>
+ <footer>
+  <div class="submit_link">
+   <input type="submit" value="Actualizar" class="alt_btn" onclick="actualizar('#nuevo', '#listado')">
+   <input type="reset" value="Restablecer" onclick="cleanForm();">
+  </div>
+ </footer>
+</form>

@@ -1,0 +1,38 @@
+matilti\modeloBundle\Entity\ScdLocalidad:
+  type: entity
+  table: scd_localidad
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    nombrelocalidad:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+    latlocalidad:
+      type: float
+      nullable: false
+    loglocalidad:
+      type: float
+      nullable: false
+    descripcionlocalidad:
+      type: text
+      nullable: true
+    poblacionlocalidad:
+      type: bigint
+      nullable: true
+  oneToOne:
+    localidad:
+      targetEntity: ScdLocalidad
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        localidad_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

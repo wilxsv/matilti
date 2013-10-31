@@ -1,0 +1,30 @@
+admin_regla:
+    pattern:  /
+    defaults: { _controller: "modeloBundle:ScdReglaSms:index" }
+
+admin_regla_show:
+    pattern:  /show
+    defaults: { _controller: "modeloBundle:ScdReglaSms:show" }
+
+admin_regla_new:
+    pattern:  /new
+    defaults: { _controller: "modeloBundle:ScdReglaSms:new" }
+
+admin_regla_create:
+    pattern:  /create
+    defaults: { _controller: "modeloBundle:ScdReglaSms:create" }
+    requirements: { _method: post }
+
+admin_regla_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "modeloBundle:ScdReglaSms:edit" }
+
+admin_regla_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "modeloBundle:ScdReglaSms:update" }
+    requirements: { _method: post }
+
+admin_regla_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "modeloBundle:ScdReglaSms:delete" }
+    requirements: { _method: post }

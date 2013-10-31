@@ -1,0 +1,120 @@
+{% block crud %}
+ <script type="text/javascript">
+  /*Funcion que limpia los campos del formulario y errores de validacion*/
+  jQuery.fn.reset = function () { $(this).each (function() { this.reset(); }); }
+  function cleanForm(){ $("#nuevo").reset(); }
+ /*Funcion que agrega un registro*/
+ function crear(strForm, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $(strForm).submit(function() {
+   $.ajax({
+    type: 'POST',
+    url: $(this).attr('action'),
+    data: $(this).serialize(),
+    error: function(data){
+    $("#load").dialog('close');
+    $("#error").dialog({ autoOpen: true, modal: true });
+    },
+    success: function(data) {
+     $(strDivGrid).html(data);
+     $(strForm).each (function(){ this.reset(); });
+     $("#error").dialog('close');
+     $("#load").dialog('close');
+     $( "#ok" ).dialog({ autoOpen: true });
+    }
+   });
+   $("#load").dialog('close');
+   return false;
+  });
+ }
+ /*Funcion que elimina un registro*/
+ function borrar(url_v, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $("#delete").dialog({
+   autoOpen: true,
+   resizable: false,
+   height:200,
+   width: 400,
+   modal: true,
+   buttons: { 
+    "Eliminar registro": function() {
+     $("#delete").dialog( "close" );
+     $.ajax({
+      type: 'POST',
+      url: url_v,
+      data: $(this).serialize(),
+      error: function(data){
+       $("#load").dialog('close');
+       $("#error").dialog({ autoOpen: true, modal: true });
+      },
+      success: function(data) {
+       $(strDivGrid).html(data);
+       $("#error").dialog('close');
+       $("#load").dialog('close');
+       $( "#ok" ).dialog({ autoOpen: true });
+      }
+     });
+    },
+    Cancel: function() {
+     $("#delete").dialog( "close" );
+    }
+   }
+  });
+  $("#load").dialog('close');
+  return false;
+ }
+ /*Funcion que muestra un registro a editar*/
+ function editar(url_v, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $.ajax({
+   type: 'POST',
+   url: url_v,
+   data: $(this).serialize(),
+   error: function(data){
+    $("#load").dialog('close');
+    $("#error").dialog({ autoOpen: true, modal: true });
+   },
+   success: function(data) {
+    $(strDivGrid).html(data);
+    $("#error").dialog('close');
+    $("#load").dialog('close');
+   }
+  });
+  $("#load").dialog('close');
+  return false;
+ }
+ /*Funcion que actualiza un registro*/
+ function actualizar(strForm, strDivGrid){
+  $("#load").dialog({ autoOpen: true });
+  $(strForm).submit(function() {
+   $.ajax({
+    type: 'POST',
+    url: $(this).attr('action'),
+    data: $(this).serialize(),
+    error: function(data){
+    $("#load").dialog('close');
+    $("#error").dialog({ autoOpen: true, modal: true });
+    },
+    success: function(data) {
+     $(strDivGrid).html(data);
+     $('#nuevo').each (function(){ this.reset(); });
+     $(strForm).each (function(){ this.reset(); });
+     $("#error").dialog('close');
+     $("#load").dialog('close');
+     $( "#ok" ).dialog({ autoOpen: true });
+    }
+   });
+   $("#load").dialog('close');
+   return false;
+  });
+ }
+ </script>
+ <script>
+  $(function() {
+   $( "#error" ).dialog({ autoOpen: false });
+   $( "#ok" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#load" ).dialog({ autoOpen: false });
+   $( "#delete" ).dialog({ autoOpen: false });
+  });
+ </script>
+{% endblock %}

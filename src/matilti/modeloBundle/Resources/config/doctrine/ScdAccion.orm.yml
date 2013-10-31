@@ -1,0 +1,37 @@
+matilti\modeloBundle\Entity\ScdAccion:
+  type: entity
+  table: scd_accion
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    tituloaccion:
+      type: string
+      length: 75
+      fixed: false
+      nullable: false
+    uriaccion:
+      type: text
+      nullable: true
+    detalleaccion:
+      type: text
+      nullable: true
+    namespacetitulo:
+      type: string
+      length: 150
+      fixed: false
+      nullable: false
+  oneToOne:
+    rol:
+      targetEntity: ScdRol
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        rol_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

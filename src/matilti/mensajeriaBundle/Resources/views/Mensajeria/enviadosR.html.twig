@@ -1,0 +1,24 @@
+<h2>Mensajes <span>Enviados</span></h2>
+<article>
+<table class="visualize" cellspacing="0">
+     <thead>
+      <tr>
+       <th>Destinatario</th>
+       <th style="width:50%">Mensaje</th>
+       <th>Fecha / Hora</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for item in pager.getResults %}
+       <tr>
+        <td>{{ item.usuario.username }}</td>
+        <td>{{ item.mensajeenviado }}</td>
+        <td>{{ item.fechahoraenviado|date("Y/m/d H:i:s") }}</td>
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    {% if pager.isPaginable %}
+     {{ paginate(pager,"mensajeria_enviados") }}
+    {% endif %}
+</article>

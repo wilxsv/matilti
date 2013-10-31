@@ -1,0 +1,7 @@
+parameters:
+#    sms.example.class: matilti\smsBundle\Example
+
+services:
+#    sms.example:
+#        class: %sms.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

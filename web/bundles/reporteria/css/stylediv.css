@@ -1,0 +1,87 @@
+.wrapper{
+   position: relative;
+   left: 0px;
+   width: 100%;
+   margin-bottom: 1px;}
+.repfoot{
+ display: inline;
+ width: 27%; 
+}
+#general{
+   position: relative;
+   float: left;
+   left: 5px;
+   width: 100%;
+   height: 285px; 
+   display: inline; 
+}
+#cgeneral
+{
+ position: relative;
+ float: left;
+ display: block;
+ width: 27%;
+}
+#cencuestas {
+ position: relative;
+ float: left;
+ display: block;
+ width: 32%;
+}
+#encuestas{
+   position: relative;
+   float: left;
+   left: 15px;
+   width: 100%;
+   height: 285px;
+   display: inline; 
+}
+#operaciones{
+   position: relative;
+   float: left;
+   left: 25px;
+   width: 41%;
+   height: 300px;
+}
+#denuncias{
+   position: relative;
+   float: left;
+   left: 5px;
+   width: 100%;
+   height: 285px;
+   display: inline; 
+}
+.cinferior
+{
+ position: relative;
+ float: left;
+ display: block;
+ width: 25%;
+}
+#localidad{
+   position: relative;
+   float: left;
+   width: 100%;
+   height: 285px;
+   display: inline; 
+}
+#genero{
+   position: relative;
+   float: left;
+   width: 100%;
+   height: 285px;
+   display: inline; 
+}
+#edad{
+   position: relative;
+   float: left;
+   width: 100%;
+   height: 285px;
+   display: inline; 
+}
+body {
+   border-width: 0px;
+   padding: 0px;
+   margin: 0px;
+   font-size: 90%;
+}

@@ -1,0 +1,10 @@
+<header><h3>Editar Rol</h3></header>
+<form action="{{ path('admin_rol_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} id="nuevo">
+ {{ form_widget(edit_form) }}
+ <footer>
+  <div class="submit_link">
+   <input type="submit" value="Actualizar" class="alt_btn" onclick="actualizar('#nuevo', '#listado')">
+   <input type="reset" value="Restablecer" onclick="cleanForm();">
+  </div>
+ </footer>
+</form>

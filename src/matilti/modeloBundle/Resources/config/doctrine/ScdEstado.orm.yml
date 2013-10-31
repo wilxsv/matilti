@@ -1,0 +1,19 @@
+matilti\modeloBundle\Entity\ScdEstado:
+  type: entity
+  table: scd_estado
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    nombreestado:
+      type: string
+      length: 75
+      fixed: false
+      nullable: false
+    detalleestado:
+      type: text
+      nullable: true
+  lifecycleCallbacks: {  }

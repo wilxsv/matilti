@@ -1,0 +1,80 @@
+matilti\modeloBundle\Entity\Sentitems:
+  type: entity
+  table: sentitems
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+    sequenceposition:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+    updatedindb:
+      type: datetime
+      nullable: false
+    insertintodb:
+      type: datetime
+      nullable: false
+    sendingdatetime:
+      type: datetime
+      nullable: false
+    deliverydatetime:
+      type: datetime
+      nullable: true
+    text:
+      type: text
+      nullable: false
+    destinationnumber:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    coding:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    udh:
+      type: text
+      nullable: false
+    smscnumber:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    class:
+      type: integer
+      unsigned: false
+      nullable: false
+    textdecoded:
+      type: text
+      nullable: false
+    senderid:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    status:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    statuserror:
+      type: integer
+      unsigned: false
+      nullable: false
+    tpmr:
+      type: integer
+      unsigned: false
+      nullable: false
+    relativevalidity:
+      type: integer
+      unsigned: false
+      nullable: false
+    creatorid:
+      type: text
+      nullable: false
+  lifecycleCallbacks: {  }

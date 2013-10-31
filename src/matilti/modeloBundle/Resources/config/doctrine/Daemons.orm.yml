@@ -1,0 +1,18 @@
+matilti\modeloBundle\Entity\Daemons:
+  type: entity
+  table: daemons
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    start:
+      type: text
+      nullable: false
+    info:
+      type: text
+      nullable: false
+  lifecycleCallbacks: {  }

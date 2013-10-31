@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Acceso a matilti</title>
+  <link rel="stylesheet" href="{{ asset('css/login/flexi-background.css') }}" type="text/css"  media="screen" />
+  <link rel="stylesheet" href="{{ asset('css/login/styles.css') }}" type="text/css"  media="screen" />
+ </head>
+ <body>
+  <script src="{{ asset('js/flexi-background.js') }}" type="text/javascript" charset="utf-8"></script>
+  <div id="box">
+   <img src="{{ asset('images/logo.png') }}" class="logo" alt="yourlogo" />
+   <h1>Acceso a usuarios Matilti.</h1>
+   {% if error %}
+    <b> {{ error.message }} </b>
+   {% endif %}
+   <form action="{{ path('_security_check') }}" method="POST">
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <input type="password" id="password" name="_password" />
+    <input type="checkbox" id="remember" value="Remember" />
+    <div class="hover-opacity"><label for="remember">Remember me</label></div>
+    <input type="submit" name="login" value="Autenticame" />
+   </form>
+  </div>
+  <a href="http://medialoot.com/item/clear-login-window-template/" class="forgot">Diseño basado en Medialoot</a>
+ </body>
+</html>

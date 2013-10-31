@@ -1,0 +1,43 @@
+<h1>ScdDenuncia list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Mensajedenuncia</th>
+            <th>Fechahorainicio</th>
+            <th>Fechahorafin</th>
+            <th>Denunciaactiva</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('admin_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.mensajedenuncia }}</td>
+            <td>{% if entity.fechahorainicio %}{{ entity.fechahorainicio|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>{% if entity.fechahorafin %}{{ entity.fechahorafin|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>{{ entity.denunciaactiva }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('admin_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

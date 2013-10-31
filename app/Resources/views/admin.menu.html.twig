@@ -1,0 +1,41 @@
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+	  <form class="quick_search">
+	   <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	  </form>
+	  <hr/>
+	  <h3>Opciones</h3>
+	  <ul class="toggle">
+	   <li class="icn_new_article"><a href="{{ path("admin_regla") }}">Reglas de mensajes</a></li>
+	   <li class="icn_edit_article"><a href="{{ path("admin_rol") }}">Catalogo de roles</a></li>
+	   <li class="icn_categories"><a href="{{ path("admin_estado") }}">Catalogo de estados</a></li>
+	   <li class="icn_tags"><a href="{{ path("mensajeria") }}">Mensajes</a></li>
+	  </ul>
+	  <h3>Usuarios</h3>
+	  <ul class="toggle">
+	   <li class="icn_add_user"><a href="{{ path("admin_usuario") }}">Nuevo Usuario</a></li>
+	   <li class="icn_view_users"><a href="{{ path("admin_usuario") }}">Listar usuarios</a></li>
+	   <li class="icn_settings"><a href="{{ path("admin_entidad") }}">Entidades</a></li>
+	   <li class="icn_profile"><a href="{{ path("_security_logout") }}">Salir</a></li>
+	  </ul>
+	  <h3>Archivos y Media</h3>
+	  <ul class="toggle">
+	   <li class="icn_folder"><a href="{{ path("reporteria") }}">Reportes</a></li>
+	   <li class="icn_photo"><a href="#">Galeria</a></li>
+	   <li class="icn_audio"><a href="#">Monitor en twitter</a></li>
+	   <li class="icn_video"><a href="#">Monitor en facebook</a></li>
+	  </ul>
+	  <h3>Otros</h3>
+	  <ul class="toggle">
+	   <li class="icn_security"><a href="#">Security</a></li>
+	   <li class="icn_jump_back"><a href="{{ path("_security_logout") }}">Salir</a></li>
+	  </ul>
+{% else %}
+          <p>Usuario no autenticado <a href="" title="Autenticate">Autenticate.</a></p>
+{% endif %}
+	  <footer>
+	   <hr />
+	   <p>Template basado en:<br />
+	    <strong>Copyright &copy; 2011 <a href="http://medialoot.com/item/html5-admin-template/">Website Admin</a></strong>
+	   </p>
+	   <p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
+	  </footer>

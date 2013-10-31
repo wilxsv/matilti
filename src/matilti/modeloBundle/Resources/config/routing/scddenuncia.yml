@@ -1,0 +1,30 @@
+admin:
+    pattern:  /
+    defaults: { _controller: "modeloBundle:ScdDenuncia:index" }
+
+admin_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "modeloBundle:ScdDenuncia:show" }
+
+admin_new:
+    pattern:  /new
+    defaults: { _controller: "modeloBundle:ScdDenuncia:new" }
+
+admin_create:
+    pattern:  /create
+    defaults: { _controller: "modeloBundle:ScdDenuncia:create" }
+    requirements: { _method: post }
+
+admin_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "modeloBundle:ScdDenuncia:edit" }
+
+admin_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "modeloBundle:ScdDenuncia:update" }
+    requirements: { _method: post }
+
+admin_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "modeloBundle:ScdDenuncia:delete" }
+    requirements: { _method: post }

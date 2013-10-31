@@ -1,0 +1,23 @@
+modeloBundle_homepage:
+    pattern:  /admin
+    defaults: { _controller: modeloBundle:Default:index }
+
+modeloBundle_admin_estado:
+    resource: "@modeloBundle/Resources/config/routing/scdestado.yml"
+    prefix:   /admin/estado
+
+modeloBundle_admin_rol:
+    resource: "@modeloBundle/Resources/config/routing/scdrol.yml"
+    prefix:   /admin/rol
+
+modeloBundle_admin_regla:
+    resource: "@modeloBundle/Resources/config/routing/scdreglasms.yml"
+    prefix:   /admin/regla
+
+modeloBundle_admin_usuario:
+    resource: "@modeloBundle/Resources/config/routing/scdusuario.yml"
+    prefix:   /admin/usuario
+
+modeloBundle_admin_entidad:
+    resource: "@modeloBundle/Resources/config/routing/scdentidad.yml"
+    prefix:   /admin/entidad

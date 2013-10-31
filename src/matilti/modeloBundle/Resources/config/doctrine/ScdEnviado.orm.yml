@@ -1,0 +1,47 @@
+matilti\modeloBundle\Entity\ScdEnviado:
+  type: entity
+  table: scd_enviado
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    mensajeenviado:
+      type: string
+      length: 160
+      fixed: false
+      nullable: false
+    fechahoraenviado:
+      type: datetime
+      nullable: false
+  oneToOne:
+    encuesta:
+      targetEntity: ScdEncuesta
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        encuesta_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    respuesta:
+      targetEntity: ScdRecibido
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        respuesta_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    usuario:
+      targetEntity: ScdUsuario
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        usuario_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

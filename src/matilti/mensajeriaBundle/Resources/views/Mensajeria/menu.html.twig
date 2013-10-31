@@ -1,0 +1,17 @@
+{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+ <li><a href="{{ path('_welcome') }}">Inicio</a></li>
+ <li><a href="{{ path("_welcome", { 'page': 'functions' }) }}">Funciones</a></li>
+ <li><a href="{{ path('reporteria_reportes') }}">Reportes</a></li>
+ <li><a href="{{ path('usuarioBundle_homepage') }}">Autenticarte</a></li>
+{% else %}
+ <li><a href="{{ path('_welcome') }}">Inicio</a></li>
+ <li><a href="{{ path('mensajeria_enviados') }}">Enviados</a></li>
+ <li><a href="{{ path('mensajeria_recibidos') }}">Recibidos</a></li>
+ <li><a href="{{ path('mensajeria_encuestas') }}">Encuestas</a></li>
+ <li><a href="{{ path('mensajeria_consultar') }}">Resultados</a></li>
+ <li><a href="{{ path('reporteria_reportes') }}">Reportes</a></li>
+ {% if is_granted('ROLE_MAINTENANCE') %}
+  <li><a href="{{ path('modeloBundle_homepage') }}">Administracion</a></li>
+ {% endif %}
+ <li><a href="{{ path('_security_logout') }}">Salir</a></li>
+{% endif %}

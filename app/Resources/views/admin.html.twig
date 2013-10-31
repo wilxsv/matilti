@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <title>{% block title %}Administración :: {% endblock %}</title>
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+
+  <link rel="stylesheet" href="{{ asset('css/matilti/layout.css') }}" type="text/css" media="screen" />
+  <!--[if lt IE 9]>
+   <link rel="stylesheet" href="{{ asset('css/matilti/ie.css') }}" type="text/css" media="screen" />
+   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui-1.8.20.custom.css') }}">
+  
+  {% block css %}{% endblock %}
+  <script src="{{ asset('js/matilti/jquery-1.5.2.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/matilti/hideshow.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/matilti/jquery.tablesorter.min.js') }}" type="text/javascript"></script>
+  <script type="text/javascript" src="{{ asset('js/matilti/jquery.equalHeight.js') }}"></script>
+  <script type="text/javascript">
+   $(document).ready(function(){ $(".tablesorter").tablesorter(); } );
+   $(document).ready(function() { //When page loads...
+     $(".tab_content").hide(); //Hide all content
+     $("ul.tabs li:first").addClass("active").show(); //Activate first tab
+     $(".tab_content:first").show(); //Show first tab content
+	//On Click Event
+     $("ul.tabs li").click(function() {
+       $("ul.tabs li").removeClass("active"); //Remove any "active" class
+       $(this).addClass("active"); //Add "active" class to selected tab
+       $(".tab_content").hide(); //Hide all tab content
+
+       var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+       $(activeTab).fadeIn(); //Fade in the active ID content
+       return false;
+     });
+   });
+  </script>
+  <script type="text/javascript">$(function(){ $('.column').equalHeight(); });</script>
+  <script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>
+  {% include '::crud.files.js.twig' %}
+  {% block crud %}{% endblock %}
+  {% block js %}{% endblock %}
+ </head>
+ <body>
+  {% block body %}
+   <header id="header">
+    <hgroup>
+     <h1 class="site_title"><a href="{{ path("home") }}">Administración Matilti</a></h1>
+     <h2 class="section_title">Dashboard administracion</h2>
+     <div class="btn_view_site"><a href="{{ path("_welcome") }}">Sitio-[Producción]</a></div>
+    </hgroup>
+   </header>
+   <section id="secondary_bar">
+    <div class="user">
+    </div> 
+    <div class="breadcrumbs_container">
+     <article class="breadcrumbs">
+      <a href="{{ path("_security_logout") }}">Salir</a><div class="breadcrumb_divider"></div>
+      <a class="current">Administración</a><div class="breadcrumb_divider"></div>
+      <a class="current">Dashboard</a>
+     </article>
+    </div>
+   </section>
+   <aside id="sidebar" class="column">
+    {% include '::admin.menu.html.twig' %}
+   </aside><!-- end of sidebar -->
+   <section id="main" class="column">
+    {% if app.session.hasFlash('alerta') %}<h4 class="alert_warning">{{ app.session.flash('alerta') }}</h4>{% endif %}
+    {% if app.session.hasFlash('error') %}<h4 class="alert_error">{{ app.session.flash('error') }}</h4>{% endif %}
+    {% if app.session.hasFlash('success') %}<h4 class="alert_success">{{ app.session.flash('success') }}</h4>{% endif %}
+    {% if app.session.hasFlash('info') %}<h4 class="alert_info">{{ app.session.flash('info') }}</h4>{% endif %}
+    {% block marco %}
+     <article class="module width_3_quarter">
+      <header>
+       <h3 class="tabs_involved">Opciones de administracion de usuarios</h3>
+       <ul class="tabs">
+        <li><a href="#tab1">Portada</a></li>
+        <li><a href="#tab2">Ultimos susesos</a></li>
+       </ul>
+      </header>
+      <div class="tab_container">
+       <div id="tab1" class="tab_content">
+        <img src="{{ asset('images/etc/256px-Heckert_GNU_white.svg.png') }}" alt="Promoción del desarrollo colaborativo de software y conocimiento mediante el uso de licencias libres: GPL, AGPL, LGPL, GFDL, entre otros;"  />
+       </div><!-- end of #tab1 -->
+       <div id="tab2" class="tab_content">
+         <p>El Centro para la Defensa del Consumidor (CDC), surgió en 1991 como resultado de una coordinación entre sectores sociales (organizaciones de mujeres, cooperativas de consumo, organizaciones comunitarias en zonas urbanas), que coincidieron en el interés de promover la defensa de derechos de las personas consumidoras. El CDC se constituyó legalmente en 1992 y obtuvo la personería jurídica en 1995.<br/>
+En estos años el CDC desarrolló muchas acciones exitosas, destacándose aquellas que lograron incidir propositivamente en la aprobación de la Ley de Protección al Consumidor en 1992, su reforma en 1996, así como en la modificación integral que la normativa tuvo en el año 2005. De igual manera, sobresalen las campañas impulsadas frente a la privatización de los servicios públicos y por una mejor protección de las y los usuarios así como los esfuerzos dirigidos a la construcción y desarrollo de un movimiento social para la defensa de lo derechos de las personas consumidoras en El Salvador.<br/>
+
+Las actividades institucionales contribuyeron a que los derechos de las y los consumidores estén mejor posicionados en la agenda pública del país y que gradualmente sean mejor reconocidos por los distintos actores de la sociedad, y primordialmente por las personas consumidoras.</p>
+       </div><!-- end of #tab2 -->
+      </div><!-- end of .tab_container -->
+     </article><!-- end of content manager article -->
+     <article class="module width_quarter">
+      <header><h3>Messages</h3></header>
+       <div class="message_list">
+        <div class="module_content">
+         <div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+          <p><strong>John Doe</strong></p>
+         </div>
+         <div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+          <p><strong>John Doe</strong></p>
+         </div>
+		<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+				</div>
+			</div>
+      <footer>
+       <form class="post_message">
+        <input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+        <input type="submit" class="btn_post_message" value=""/>
+       </form>
+      </footer>
+     </article><!-- end of messages article -->
+    {% endblock %}<!-- end block marco -->
+    <div class="clear"></div>
+    <div class="spacer"></div>
+   </section>
+  {% endblock %}
+  {% block crudMsg %}
+   <div id="error" title="Estado de registro">
+    <img src="{{ asset('images/etc/process-stop.png') }}" /><b>Error al procesar el registro</b><br />
+    Por favor, verifique los datos e intente nuevamente.
+   </div>
+   <div id="load" title="Estado :: "><img src="{{ asset('images/etc/load.png') }}" /></div>
+   <div id="ok" title="Estado de registro"><img src="{{ asset('images/etc/accessories-text-editor.png') }}" height="32" width="32" />Registro procesado con exito.</div>
+   <div id="delete" title="Eliminar registro ::">
+    <p><img src="{{ asset('images/etc/edit-clear.png') }}" height="32" width="32" />Este registro se eliminará permanentemente. <br /><b>¿Está seguro de hacerlo?</b></p>
+   </div>
+  {% endblock %}
+ </body>
+</html>

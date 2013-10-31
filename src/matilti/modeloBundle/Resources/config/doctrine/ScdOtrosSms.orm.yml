@@ -1,0 +1,26 @@
+matilti\modeloBundle\Entity\ScdOtrosSms:
+  type: entity
+  table: scd_otros_sms
+  fields:
+    id:
+      id: true
+      type: bigint
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    mensajeotrosms:
+      type: text
+      nullable: false
+    numerootrosms:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    inboxId:
+      type: bigint
+      nullable: false
+      column: inbox_id
+    registrotrosms:
+      type: datetime
+      nullable: false
+  lifecycleCallbacks: {  }

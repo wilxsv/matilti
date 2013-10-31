@@ -1,0 +1,116 @@
+{% extends "::matilti-feminista.html.twig" %}
+{% block title %} :: Reportes :: {% endblock %}
+{% block titleH1 %} .:: Matilti ::. {% endblock %}
+{% block tema %}<h2>Sistema de comunicación digital comunitaria</h2>{% endblock %}
+{% block columna %}12{% endblock %}
+{% block columnas %}{% endblock %}
+{% block contenido %}
+ <div><h2>Trafico de mensajes en matilti</h2></div>
+ <p>Trafico general
+  <div id="trafico"></div><div id="reglas"></div>
+ </p>
+ <div><h2>Usuarias registradas</h2></div> 
+   <div id="genero"></div>
+ <h2>Denuncias realizadas</h2>
+ <div id="map"></div>
+  <script>
+Morris.Donut({
+  element: 'trafico',
+  data: [ {label: "Enviados", value: 6950}, {label: "Recibidos", value: 3358}, {label: "Spammers", value: 1178} ]
+	});
+  </script>
+ <script>
+(function basic_pie(container) {
+    var d1 = [[0, 53]],
+        d2 = [[0, 97]],
+        d3 = [[0, 454]],
+        graph;
+    graph = Flotr.draw(container, [{
+        data: d1, label: "Hombres" }, {
+        data: d2, label: "Datos incompletos" }, {
+        data: d3, label: "Mujeres", pie: { explode: 50 } }], {
+        HtmlText: false,
+        grid: { verticalLines: false, horizontalLines: false },
+        xaxis: { showLabels: false },
+        yaxis: { showLabels: false },
+        pie: { show: true, explode: 6 },
+        mouse: { track: true },
+        legend: { position: "se", backgroundColor: "#D2E8FF" }
+    });
+})(document.getElementById("genero"));
+ </script>
+{% endblock %}
+{% block css %}
+{% set i=720 %}
+{% set j=300 %}
+ <style type="text/css">
+  #total {  width : {{ i / 2 }}px; height: {{ j }}px; margin: 8px auto; float:left;  }
+  #trafico { width : 360px; height: 300px; margin: 8px auto; float:left; }
+  #reglas { width : 360px; height: 300px; margin: 8px auto; }
+  #genero { width : 360px; height: 300px; position:fixed; }
+
+  #localidad { width : 300px; height: 200px; margin: 8px auto; }
+  #populares { width : 300px; height: 200px; margin: 8px auto; }
+  #operaciones { width : 300px; height: 200px; margin: 8px auto; }
+  #mapa { width : 300px; height: 200px; margin: 8px auto; }
+  #mapas { width : 300px; height: 200px; margin: 8px auto; }
+  #map { width: 700px; height: 360px; margin: 8px auto; }
+ </style>
+{% endblock %}
+{% block js %}
+ <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+
+ </script><script src="http://www.humblesoftware.com/static/js/hsd.js?d3fa1"></script>
+ <!--[if IE]><script src="http://www.humblesoftware.com/static/lib/FlashCanvas/bin/flashcanvas.js"></script><![endif]-->
+ <script src="http://www.humblesoftware.com/static/js/hsd-flotr2.js"></script>
+ <script>
+ $(function () {
+(function basic_radar(container) {
+    var s1 = { label: "Enviados", data: [ [0, 2345], [1, 1045], [2, 21], [3, 975], [4, 765], [5, 808], [6, 132], [7, 174], [8, 677], [9, 8] ] },
+        s2 = { label: "Recividos", data: [ [0, 586], [1, 522], [2, 21], [3, 975], [4, 255], [5, 202], [6, 54], [7, 58], [8, 677], [9, 8] ] },
+        graph, ticks;
+    ticks = [ [0, "Denuncia"], [1, "Redes Sociales"], [2, "Cerrar"], [3, "Estatus"], [4, "Dato"], [5, "Consejo"], [6, "Abuso"], [7, "Ayuda"], [8, "Invitar"], [9, "Salir"] ];
+    graph = Flotr.draw(container, [s1, s2], {
+        radar: { show: true },
+        grid: { circular: true, minorHorizontalLines: true },
+        yaxis: { min: 0, max: 2345, minorTickFreq: 2 },
+        xaxis: { ticks: ticks },
+        mouse: { track: true }
+    });
+})(document.getElementById("reglas"));
+});
+    </script>
+
+ <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+ <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/data.json"></script>
+ <script type="text/javascript">
+      var script = '<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer';
+      if (document.location.search.indexOf('compiled') !== -1) {
+        script += '_compiled';
+      }
+      script += '.js"><' + '/script>';
+      document.write(script);
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var center = new google.maps.LatLng(13.933729,-89.02583);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: center,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var markers = [];
+        {% for i in 1..604 %}
+         var latLng = new google.maps.LatLng( {{13.928652 + (13.942481-13.928652)*(random(604) / 604)}}, -{{89.015536 - (89.015536-89.033818)*(random(604) / 604)}});
+         var marker = new google.maps.Marker({ position: latLng });
+         markers.push(marker);
+        {% endfor %}        
+        var markerCluster = new MarkerClusterer(map, markers);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+{% endblock %}

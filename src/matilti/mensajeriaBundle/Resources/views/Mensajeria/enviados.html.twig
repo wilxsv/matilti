@@ -1,0 +1,139 @@
+{% extends 'mensajeriaBundle::default.html.twig' %}
+{% block css %}
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/basicM.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/visualizeM.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/paginacion.css') }}" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/matiltimensajeria/css/validationEngine.jquery.css') }}" type="text/css" />
+{% endblock %}
+{% block js %}
+<script src="{{ asset('bundles/matiltimensajeria/js/jquery.validationEngine-es.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('bundles/matiltimensajeria/js/jquery.validationEngine.js') }}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+ $(document).ready(
+	function(){
+		$("form").submit(function(){
+		if (!$('#formEnviar').validationEngine('validate'))
+		{return false;}
+		$("#load").dialog({ autoOpen: true });	
+		$.ajax({
+		type: 'POST',
+		url: $(this).attr('action'),
+		data: $(this).serialize(),
+		error: function(data){
+		$("#load").dialog('close');
+		$("#error").dialog({ autoOpen: true, modal: true });
+		},
+		success: function(data) {
+		$("#content").html(data);
+		$('#formEnviar').each (function(){ this.reset(); });
+		$("#error").dialog('close');
+		$("#load").dialog('close');
+		$( "#ok" ).dialog({ autoOpen: true });
+		visibilidadFiltros();
+		}
+		});
+		$("#load").dialog('close');
+		return false;
+	});
+	}
+ );
+ function visibilidadFiltros(){
+		if ($("#EnvioMensaje_masivo").is(":checked"))
+		{
+			$("#filtros").hide("fast");
+			$("#EnvioMensaje_localidad").removeAttr("class");
+			$("#EnvioMensaje_minEdad").removeAttr("class");
+			$("#EnvioMensaje_maxEdad").removeAttr("class");
+			$("#EnvioMensaje_genero").removeAttr("class");
+		}
+		else
+		{
+			$("#EnvioMensaje_minEdad").attr("class","validate[required,min[1],max[98]]");
+			$("#EnvioMensaje_maxEdad").attr("class","validate[required,min[2],max[99]]");
+			$("#EnvioMensaje_genero").attr("class","validate[required]");
+			$("#EnvioMensaje_localidad").attr("class","validate[required]");
+			$("#filtros").show("fast");
+		}
+ }
+ </script>
+<script>
+  $(document).ready(function() {
+   $( "#error" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#ok" ).dialog({ autoOpen: false, buttons: { "Ok": function() { $(this).dialog("close"); } } });
+   $( "#load" ).dialog({ autoOpen: false });
+   $( "#enviar" ).dialog({ autoOpen: false });
+   $("#formEnviar").validationEngine();
+   
+  });
+ </script>  
+{% endblock %}
+{% block contenido %}
+<div class="wrapper">
+<section id="content">
+	<h2>Mensajes <span>Enviados</span></h2>
+<article>
+<table class="visualize" cellspacing="0">
+     <thead>
+      <tr>
+       <th>Destinatario</th>
+       <th style="width:50%">Mensaje</th>
+       <th>Fecha / Hora</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for item in pager.getResults %}
+       <tr>
+        <td>{{ item.usuario.username }}</td>
+        <td>{{ item.mensajeenviado }}</td>
+        <td>{{ item.fechahoraenviado|date("Y/m/d H:i:s") }}</td>
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    {% if pager.isPaginable %}
+     {{ paginate(pager,"mensajeria_enviados") }}
+    {% endif %}
+</article>
+</section>
+<div id="error" title="Envio de Mensajes">
+  <img src="{{ asset('bundles/matiltimensajeria/images/information.png') }}" height="32" width="32" /><b>Error</b><br />
+  Algo inesperado ha ocurrido, verifique los datos e intente nuevamente.
+  </div>
+ <div id="load" title="Envio de Mensajes"><img src="{{ asset('bundles/matiltimensajeria/images/load.png') }}" /></div>
+ <div id="ok" title="Envio de Mensajes"><img src="{{ asset('bundles/matiltimensajeria/images/Ok-icon.png') }}" height="32" width="32" />Mensaje enviado exitosamente.</div>
+ <div id="enviar" title="Envio de Mensajes">
+  <p><img src="{{ asset('bundles/matiltimensajeria/images/twitter-facebook.png') }}" height="32" width="32" />Este mensaje sera publicado <br /><b>¿Está seguro de hacerlo?</b></p>
+ </div>
+ 
+{% endblock %}
+{% block aside %}
+	<aside>
+	<h2>Envio de <span>Mensajes</span></h2>
+	
+	<form action="{{ path('mensajeria_enviar') }}" method="post" {{ form_enctype(formEnviar) }} id="formEnviar">
+    	
+
+    	{{ form_label(formEnviar.mensaje) }}
+    	{{ form_errors(formEnviar.mensaje) }}
+    	{{ form_widget(formEnviar.mensaje, { 'attr': {'class': 'validate[required,maxSize[160]]'} }) }}
+    	{{ form_row(formEnviar.masivo) }}
+	<div id="filtros">
+	{{ form_label(formEnviar.localidad) }}
+    	{{ form_errors(formEnviar.localidad) }}
+    	{{ form_widget(formEnviar.localidad, { 'attr': {'class': 'validate[required]'} }) }}
+	{{ form_label(formEnviar.minEdad) }}
+    	{{ form_errors(formEnviar.minEdad) }}
+    	{{ form_widget(formEnviar.minEdad, { 'attr': {'class': 'validate[required,min[1],max[98]]'} }) }}
+	{{ form_label(formEnviar.maxEdad) }}
+    	{{ form_errors(formEnviar.maxEdad) }}
+    	{{ form_widget(formEnviar.maxEdad, { 'attr': {'class': 'validate[required,min[2],max[99]]'} }) }}
+	{{ form_label(formEnviar.genero) }}
+    	{{ form_errors(formEnviar.genero) }}
+    	{{ form_widget(formEnviar.genero, { 'attr': {'class': 'validate[required]'} }) }}
+    	{{ form_rest(formEnviar) }}
+	</div>
+    	<input type="submit" value="Enviar" /><input type="reset" value="Limpiar"/> 
+	</form>
+	</aside>
+</div>
+{% endblock %}

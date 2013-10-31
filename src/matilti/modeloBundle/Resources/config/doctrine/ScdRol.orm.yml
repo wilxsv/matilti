@@ -1,0 +1,35 @@
+matilti\modeloBundle\Entity\ScdRol:
+  type: entity
+  table: scd_rol
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    nombrerol:
+      type: string
+      length: 75
+      fixed: false
+      nullable: false
+    detallerol:
+      type: text
+      nullable: true
+  manyToMany:
+    usuario:
+      targetEntity: ScdUsuario
+      cascade: {  }
+      mappedBy: rol
+      inversedBy: null
+      joinTable: null
+      orderBy: null
+    regla:
+      targetEntity: ScdReglaSms
+      cascade: {  }
+      mappedBy: rol
+      inversedBy: null
+      joinTable: null
+      orderBy: null
+  lifecycleCallbacks: {  }
