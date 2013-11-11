@@ -1,7 +1,4 @@
---
 -- PostgreSQL database dump
---
-
 -- Dumped from database version 9.1.9
 -- Dumped by pg_dump version 9.1.9
 -- Started on 2013-11-11 11:43:13 CST
