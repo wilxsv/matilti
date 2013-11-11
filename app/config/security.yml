@@ -29,5 +29,5 @@ security:
         - { path: ^/home/.*, role: IS_AUTHENTICATED_ANONIMOUSLY }
 #        - { path: ^/.*, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/mensajeria, roles: ROLE_CONTENT_MANAGEMENT, requires_channel: http}
-#        - { path: ^/admin*, roles: [ROLE_MAINTENANCE], requires_channel: http }
-#        - { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/admin*, roles: [ROLE_MAINTENANCE], requires_channel: http }
+        - { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

@@ -1,0 +1,13 @@
+[parameters]
+    database_driver="pdo_pgsql"
+    database_host="localhost"
+    database_port="5432"
+    database_name="temp"
+    database_user="temp"
+    database_password="passwd"
+    mailer_transport="smtp"
+    mailer_host="SERVER_MAIL"
+    mailer_user=""
+    mailer_password=""
+    locale="es"
+    secret="be14d102152710fd7c0ffabd8fdd3b884a"

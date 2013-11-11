@@ -2,7 +2,7 @@ reporteria:
     pattern:  /reporteria
     defaults: { _controller: reporteriaBundle:Reporteria:index }
 
-reporteria_reportes:
+reporteria_defensoras:
     pattern:  /defensoras/cihuatlan
     defaults: { _controller: reporteriaBundle:Reporteria:defensora }
 
@@ -10,7 +10,7 @@ reporteria_cihuatlan:
     pattern:  /defensoras/reporte
     defaults: { _controller: reporteriaBundle:Reporteria:defensora }
 
-reporteria_defensora:
+reporteria_reportes:
     pattern:  /reportes
     defaults: { _controller: reporteriaBundle:Reporteria:reportes }
 

@@ -1,0 +1,103 @@
+reporteria:
+    pattern:  /reporteria
+    defaults: { _controller: reporteriaBundle:Reporteria:index }
+
+reporteria_reportes:
+    pattern:  /defensoras/cihuatlan
+    defaults: { _controller: reporteriaBundle:Reporteria:defensora }
+
+reporteria_cihuatlan:
+    pattern:  /defensoras/reporte
+    defaults: { _controller: reporteriaBundle:Reporteria:defensora }
+
+reporteria_defensora:
+    pattern:  /reportes
+    defaults: { _controller: reporteriaBundle:Reporteria:reportes }
+
+reporteria_general_ods:
+    pattern:  /reporteria/generalods
+    defaults: { _controller: reporteriaBundle:Reporteria:generalOds }
+
+reporteria_general_xls:
+    pattern:  /reporteria/generalxls
+    defaults: { _controller: reporteriaBundle:Reporteria:generalXls }
+
+reporteria_general_xml:
+    pattern:  /reporteria/generalxml
+    defaults: { _controller: reporteriaBundle:Reporteria:generalXml }
+
+reporteria_historial_ods:
+    pattern:  /reporteria/historialods
+    defaults: { _controller: reporteriaBundle:Reporteria:historialOds }
+
+reporteria_historial_xls:
+    pattern:  /reporteria/historialxls
+    defaults: { _controller: reporteriaBundle:Reporteria:historialXls }
+
+reporteria_historial_xml:
+    pattern:  /reporteria/historialxml
+    defaults: { _controller: reporteriaBundle:Reporteria:historialXml }
+
+reporteria_denuncias_ods:
+    pattern:  /reporteria/denunciasods
+    defaults: { _controller: reporteriaBundle:Reporteria:denunciasOds }
+
+reporteria_denuncias_xls:
+    pattern:  /reporteria/denunciasxls
+    defaults: { _controller: reporteriaBundle:Reporteria:denunciasXls }
+
+reporteria_denuncias_xml:
+    pattern:  /reporteria/denunciasxml
+    defaults: { _controller: reporteriaBundle:Reporteria:denunciasXml }
+
+reporteria_localidades_ods:
+    pattern:  /reporteria/localidadesods
+    defaults: { _controller: reporteriaBundle:Reporteria:localidadesOds }
+
+reporteria_localidades_xls:
+    pattern:  /reporteria/localidadesxls
+    defaults: { _controller: reporteriaBundle:Reporteria:localidadesXls }
+
+reporteria_localidades_xml:
+    pattern:  /reporteria/localidadesxml
+    defaults: { _controller: reporteriaBundle:Reporteria:localidadesXml }
+
+reporteria_genero_ods:
+    pattern:  /reporteria/generoods
+    defaults: { _controller: reporteriaBundle:Reporteria:generoOds }
+
+reporteria_genero_xls:
+    pattern:  /reporteria/generoxls
+    defaults: { _controller: reporteriaBundle:Reporteria:generoXls }
+
+reporteria_genero_xml:
+    pattern:  /reporteria/generoxml
+    defaults: { _controller: reporteriaBundle:Reporteria:generoXml }
+
+reporteria_edades_ods:
+    pattern:  /reporteria/edadesods
+    defaults: { _controller: reporteriaBundle:Reporteria:edadesOds }
+
+reporteria_edades_xls:
+    pattern:  /reporteria/edadesxls
+    defaults: { _controller: reporteriaBundle:Reporteria:edadesXls }
+
+reporteria_edades_xml:
+    pattern:  /reporteria/edadesxml
+    defaults: { _controller: reporteriaBundle:Reporteria:edadesXml }
+
+reporteria_encuestas_ods:
+    pattern:  /reporteria/encuestasods
+    defaults: { _controller: reporteriaBundle:Reporteria:encuestasOds }
+
+reporteria_encuestas_xls:
+    pattern:  /reporteria/encuestasxls
+    defaults: { _controller: reporteriaBundle:Reporteria:encuestasXls }
+
+reporteria_encuestas_xml:
+    pattern:  /reporteria/encuestasxml
+    defaults: { _controller: reporteriaBundle:Reporteria:encuestasXml }
+
+reporteria_localidades_mapa:
+    pattern:  /reporteria/localidadesmapa
+    defaults: { _controller: reporteriaBundle:Reporteria:localidadesMapa }

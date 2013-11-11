@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Affinity: A responsive HTML5 website template by HTML5Templates.com
+	Released for free under the Creative Commons Attribution 3.0 license (html5templates.com/license)
+	Visit http://html5templates.com for more great templates or follow us on Twitter @HTML5T
+-->
+<html>
+<head>
+<title>{% block title %}.:: Matilti Feminista ::.{% endblock %}</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Sistema de comunicación digital comunitaria es una herramienta desarrollada con visión feminista que facilita comunicación entre las personas registradas y gestiona las denuncias por violencia contra las mujeres, es usado generalmente por defensoras de derechos humanos" />
+<meta name="keywords" content="" />
+  <link rel="shortcut icon" href="{{ asset('bundles/matiltimensajeria/images/favicon.ico') }}" />
+  <link rel="stylesheet" href="{{ asset('css/matilti-feminista/5grid/core.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/matilti-feminista/5grid/core-desktop.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/matilti-feminista/5grid/core-1200px.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/matilti-feminista/5grid/core-noscript.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/matilti-feminista/style.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/matilti-feminista/style-desktop.css') }}" type="text/css">
+  <script src="{{ asset('css/matilti-feminista/5grid/jquery.js') }}" ></script>
+  <script src="stylesheet" href="{{ asset('css/matilti-feminista/5grid/init.js?use=mobile,desktop,800px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.openerWidth=52') }}"></script>
+  <!--[if IE 9]><link rel="stylesheet" href="{{ asset('css/matilti-feminista/css/style-ie9.css') }}" /><![endif]-->
+{% block js %}{% endblock %}
+{% block css %}{% endblock %}
+</head><body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<header id="header">
+			<div class="5grid-layout">
+				<div class="row">
+					<div class="12u" id="logo"> <!-- Logo -->
+						<h1><a href="#" class="mobileUI-site-name"><img src="{{ asset('images/logo.png') }}" alt="Sistema de comunicación digital comunitaria"></a></h1>
+					</div>
+				</div>
+			</div>
+			<div class="5grid-layout">
+				<div class="row">
+					<div class="12u" id="menu">
+						<div id="menu-wrapper">
+							<nav class="mobileUI-site-nav">
+								<ul>
+									<li><a href="{{ path("_welcome") }}">Inicio</a></li>
+									<li><a href="{{ path("_welcome", { 'page': 'functions' }) }}">Funciones</a></li>
+									<li><a href="{{ path("_welcome", { 'page': 'project' }) }}">Proyecto</a></li>
+									<li class="current_page_item"><a href="{{ path('reporteria_reportes') }}">Reportes</a></li>
+									<li><a href="{{ path('usuarioBundle_homepage') }}">Autenticame</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	<div id="page-wrapper" class="5grid-layout">
+		<div class="row">
+			<div class="{% block columna %}9{% endblock %}u">
+				<div id="content">
+					{% block contenido %}
+					<section>
+						<div class="post">
+							<h2>Matilti Feminista</h2>
+							<p><a href="#"><iframe src="http://player.vimeo.com/video/67407541?loop=1" width="400" height="293" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></a></p>
+						</div>
+					</section>
+					<section>
+						<div class="post">
+							<h2>Historia de nuestra herramienta</h2>
+							<p>En el Salvador gran parte de la ciudadanía posee acceso a telefonía móvil, datos consultados en la Superintendencia General de Electricidad y Telecomunicaciones SIGET[1] revelan que el uso de telefonía celular supera en gran proporción a la telefonía fija. Los registros informan que a mediados del año 2012 habían 8,485,684 lineas móviles en operación y que la densidad móvil para el año 2011 era de 134.50, es decir que por cada 100 habitantes se tenían 134 lineas móviles.
+Flujo de información de matilti - Sistema de comunicación digital comunitaria
+
+Considerando que el acceso a la telefonía móvil se ha convertido en una realidad y que su uso se ha masificado, la Colectiva de Mujeres para el Desarrollo Local, ha optado por impulsar una alternativa tecnológica que se apoye en la infraestructura de las telecomunicaciones, la cual basa su funcionamiento en un sistema simple que garantice su acceso.
+
+Bajo la premisa de crear una herramienta libre, simple y accesible se concibió Matilti, el cual es un canal de comunicación que posee varias formas de operar, pero que su funcionamiento se basa en la recepción y envió de mensajes de texto para diferentes propósitos. Entre las distintas utilidades tenemos:
+
+    Convocatorias.
+    Denuncias.
+    Campañas de información.
+    Móvil activismo (masivo, estimulo/respuesta y repuestas inteligentes).
+    Envío de información a grupos focalizados.
+    Envío de encuestas.
+    Notificación de alertas
+
+Componentes de software de matilti - Sistema de comunicación digital comunitaria
+
+Con esta herramienta se busca aumentar la participación ciudadana mediante el libre envío de mensajes de texto por teléfonos celulares, esta ventaja permite que todas las personas la usen sin requerir tecnología de uso especifico o con altos requerimientos de recursos, únicamente con un teléfono celular que pueda enviar y recibir mensajes de texto se puede usar y administrar la herramienta.
+
+Gracias a las ventajas del software libre se logro desarrollar esta solución basada en las necesidades de las mujeres organizadas y el código fuente de una herramienta similar se logro construir un medio de comunicación alternativo que comunique a nuestras defensoras de derechos humanos
+							</p>
+							<p class="button-style"><a href="http://es.wikipedia.org/wiki/Matilti_%28software%29">Leer más.</a></p>
+						</div>
+					</section>
+					{% endblock %}
+				</div>
+			</div>
+                        {% block columnas %}
+			<div class="3u">
+				<div id="sidebar2">
+					<section>
+						<div class="sbox1">
+							<h2>Trafico general</h2>
+							<ul class="style1">
+								<li><a href="#">Usuaria 453 envio una denuncia</a></li>
+								<li><a href="#">Usuaria 34 envio una denuncia</a></li>
+								<li><a href="#">Usuario 139 envio una denuncia</a></li>
+								<li><a href="#">Usuaria 7 envio una denuncia</a></li>
+								<li><a href="#">Usuaria 7 envio una denuncia</a></li>
+								<li><a href="#">Usuaria 236 envio una denuncia</a></li>
+								<li><a href="#">Usuario 79 envio una denuncia</a></li>
+								<li><a href="#">Usuaria 110 envio una denuncia</a></li>
+							</ul>
+						</div>
+						<div class="sbox2">
+							<h2>Redes</h2>
+							<a class="twitter-timeline"  href="https://twitter.com/laradiodetodas"  data-widget-id="266980741840244736">Tweets por @laradiodetodas</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+						</div>
+					</section>
+				</div>
+			</div>
+                        {% endblock %}
+		</div>
+	</div>
+	<div class="5grid-layout">
+		<div class="row" id="footer-content">
+			<div class="6u" id="box1">
+				<section>
+					<h2>Nuestras cooperantes</h2>
+					<div>
+						<p>Matilti Feminista ha sido apoyada por Horizont 3000, la Cooperación Austríaca para el Desarrollo y el Movimiento de Mujeres católicas de Austria en el marco de la ejecución del Proyecto "Fortalecimiento de la Alianza de Mujeres Centroamericanas"</p>
+						<p><img src="{{ asset('images/red_CACV.jpg') }}" alt="Alianza de Mujeres Centroamericanas"></p>
+					</div>
+				</section>
+			</div>
+			<div class="3u" id="box2">
+				<section>
+					<h2></h2>
+					<ul class="style4">
+						<li class="first"><img src="{{ asset('images/logo_ada.jpg') }}" alt="Cooperación Austríaca para el Desarrollo"></li>
+						<li class="first"><img src="{{ asset('images/CATOLICAS_MUJERES.png') }}" alt=""></li>
+						<li class="first"><img src="{{ asset('images/LOGO_HORIZONT.jpg') }}" alt="Horizont 3000"></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="5grid-layout">
+	<section>
+		<p>&copy; Matilti Feminista | Desarollado por: <a href="http://colectivafeminista.org.sv/">colectiva feminista</a> | diseño basado en: <a href="http://html5templates.com/">HTML5Templates.com</a></p>
+	</section>
+</div>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42030209-1', 'colectivafeminista.org.sv');
+  ga('send', 'pageview');
+
+</script>
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526d655b07eca5be"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'light',
+    'share' : {
+      'position' : 'right',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'matilti.colectivafeminista'},
+        {'service': 'twitter', 'id': 'laradiodetodas'}
+      ]
+    },   
+    'recommended' : {} 
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+</html>
