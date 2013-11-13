@@ -87,13 +87,14 @@
 		<div class="widget-header"><i class="icon-bar-chart"></i><h3>Origen de denuncias</h3></div><div class="widget" id="target-3">
 			<div class="widget-content">
 				<h1>Hora mas denunciada</h1>
+				<div id="genero"></div>
 			</div> <!-- /widget-content -->
 		</div> <!-- /widget -->
 	</div>
 	<div class="span3">
 		<div class="widget-header"><i class="icon-bar-chart"></i><h3>Origen de denuncias</h3></div><div class="widget" id="target-3">
 			<div class="widget-content">
-				<h1>Grafico de radar</h1>
+				<h1>Grafico de radar</h1><div id="reglas"></div>
 			</div> <!-- /widget-content -->
 		</div> <!-- /widget -->
 	</div>
@@ -111,6 +112,10 @@
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
  <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+ 
+  </script><script src="http://www.humblesoftware.com/static/js/hsd.js?d3fa1"></script>
+  <!--[if IE]><script src="http://www.humblesoftware.com/static/lib/FlashCanvas/bin/flashcanvas.js"></script><![endif]-->
+  <script src="http://www.humblesoftware.com/static/js/hsd-flotr2.js"></script>
 {% endblock %}
 {% block crudMsg %}
 	<script>
@@ -162,6 +167,44 @@
 
         var myLine = new Chart(document.getElementById("dentidad").getContext("2d")).Line(lineChartData);
 	</script>
+	
+ <script>
+(function basic_pie(container) {
+    var d1 = [[0, 53]],
+        d2 = [[0, 97]],
+        d3 = [[0, 454]],
+        graph;
+    graph = Flotr.draw(container, [{
+        data: d1, label: "Hombres" }, {
+        data: d2, label: "Datos incompletos" }, {
+        data: d3, label: "Mujeres", pie: { explode: 50 } }], {
+        HtmlText: false,
+        grid: { verticalLines: false, horizontalLines: false },
+        xaxis: { showLabels: false },
+        yaxis: { showLabels: false },
+        pie: { show: true, explode: 6 },
+        mouse: { track: true },
+        legend: { position: "se", backgroundColor: "#D2E8FF" }
+    });
+})(document.getElementById("genero"));
+ </script>
+ <script>
+ $(function () {
+(function basic_radar(container) {
+    var s1 = { label: "Enviados", data: [ [0, 2345], [1, 1045], [2, 21], [3, 975], [4, 765], [5, 808], [6, 132], [7, 174], [8, 677], [9, 8] ] },
+        s2 = { label: "Recividos", data: [ [0, 586], [1, 522], [2, 21], [3, 975], [4, 255], [5, 202], [6, 54], [7, 58], [8, 677], [9, 8] ] },
+        graph, ticks;
+    ticks = [ [0, "Denuncia"], [1, "Redes Sociales"], [2, "Cerrar"], [3, "Estatus"], [4, "Dato"], [5, "Consejo"], [6, "Abuso"], [7, "Ayuda"], [8, "Invitar"], [9, "Salir"] ];
+    graph = Flotr.draw(container, [s1, s2], {
+        radar: { show: true },
+        grid: { circular: true, minorHorizontalLines: true },
+        yaxis: { min: 0, max: 2345, minorTickFreq: 2 },
+        xaxis: { ticks: ticks },
+        mouse: { track: true }
+    });
+})(document.getElementById("reglas"));
+});
+    </script>
 {% endblock %}
 {% block css %}
 	 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
@@ -194,8 +237,8 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 	<style type="text/css">
-		#mapa { width : auto; height: 200px; margin: 8px auto; }
-		#mapas { width : auto; height: 200px; margin: 8px auto; }
+		#reglas { width : auto; height: 300px; margin: 8px auto; }
+		#genero { width : auto; height: 300px; position:fixed; }
 		#map { width: auto; height: 360px; margin: 8px auto; }
 	</style>
 {% endblock %}

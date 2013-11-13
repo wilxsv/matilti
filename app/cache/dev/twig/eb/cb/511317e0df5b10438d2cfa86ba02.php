@@ -130,13 +130,14 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 \t\t<div class=\"widget-header\"><i class=\"icon-bar-chart\"></i><h3>Origen de denuncias</h3></div><div class=\"widget\" id=\"target-3\">
 \t\t\t<div class=\"widget-content\">
 \t\t\t\t<h1>Hora mas denunciada</h1>
+\t\t\t\t<div id=\"genero\"></div>
 \t\t\t</div> <!-- /widget-content -->
 \t\t</div> <!-- /widget -->
 \t</div>
 \t<div class=\"span3\">
 \t\t<div class=\"widget-header\"><i class=\"icon-bar-chart\"></i><h3>Origen de denuncias</h3></div><div class=\"widget\" id=\"target-3\">
 \t\t\t<div class=\"widget-content\">
-\t\t\t\t<h1>Grafico de radar</h1>
+\t\t\t\t<h1>Grafico de radar</h1><div id=\"reglas\"></div>
 \t\t\t</div> <!-- /widget-content -->
 \t\t</div> <!-- /widget -->
 \t</div>
@@ -151,26 +152,30 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 ";
     }
 
-    // line 109
+    // line 110
     public function block_js($context, array $blocks = array())
     {
-        // line 110
+        // line 111
         echo " <link rel=\"stylesheet\" href=\"http://cdn.oesmith.co.uk/morris-0.4.3.min.css\">
  <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js\"></script>
  <script src=\"//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js\"></script>
  <script src=\"http://cdn.oesmith.co.uk/morris-0.4.3.min.js\"></script>
+ 
+  </script><script src=\"http://www.humblesoftware.com/static/js/hsd.js?d3fa1\"></script>
+  <!--[if IE]><script src=\"http://www.humblesoftware.com/static/lib/FlashCanvas/bin/flashcanvas.js\"></script><![endif]-->
+  <script src=\"http://www.humblesoftware.com/static/js/hsd-flotr2.js\"></script>
 ";
     }
 
-    // line 115
+    // line 120
     public function block_crudMsg($context, array $blocks = array())
     {
-        // line 116
+        // line 121
         echo "\t<script>
 \t\tMorris.Donut({
 \t\t\telement: 'trafico',
 \t\t\tdata: [ {label: \"Denuncias\", value: ";
-        // line 119
+        // line 124
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "valores"), "total_denuncias", array(), "array"), "html", null, true);
         echo "}, {label: \"Msg directos\", value: ";
         echo twig_escape_filter($this->env, (($this->getAttribute($this->getContext($context, "valores"), "Recibidos", array(), "array") - $this->getAttribute($this->getContext($context, "valores"), "total_denuncias", array(), "array")) - $this->getAttribute($this->getContext($context, "valores"), "Otros", array(), "array")), "html", null, true);
@@ -183,7 +188,7 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 \t\tMorris.Bar({
 \t\t\telement: 'dlocalidad',
 \t\t\tdata: [";
-        // line 125
+        // line 130
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "d_localidad"));
         foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
@@ -207,7 +212,7 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 \t\tMorris.Area({
 \t\t\telement: 'dentidad',
 \t\t\tdata: [";
-        // line 135
+        // line 140
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "d_entidad"));
         foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
@@ -229,7 +234,7 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 \t<script>
 \t\tvar lineChartData = {
 \t\t\tlabels: [";
-        // line 143
+        // line 148
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "d_entidad"));
         foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
@@ -248,7 +253,7 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 \t\t\t\t    pointColor: \"rgba(151,187,205,1)\",
 \t\t\t\t    pointStrokeColor: \"#fff\",
 \t\t\t\t    data: [";
-        // line 150
+        // line 155
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "d_entidad"));
         foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
@@ -267,7 +272,7 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 \t\t\t\t    pointColor: \"rgba(220,220,220,1)\",
 \t\t\t\t    pointStrokeColor: \"#fff\",
 \t\t\t\t    data: [";
-        // line 157
+        // line 162
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "d_entidad"));
         foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
@@ -286,13 +291,51 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 
         var myLine = new Chart(document.getElementById(\"dentidad\").getContext(\"2d\")).Line(lineChartData);
 \t</script>
+\t
+ <script>
+(function basic_pie(container) {
+    var d1 = [[0, 53]],
+        d2 = [[0, 97]],
+        d3 = [[0, 454]],
+        graph;
+    graph = Flotr.draw(container, [{
+        data: d1, label: \"Hombres\" }, {
+        data: d2, label: \"Datos incompletos\" }, {
+        data: d3, label: \"Mujeres\", pie: { explode: 50 } }], {
+        HtmlText: false,
+        grid: { verticalLines: false, horizontalLines: false },
+        xaxis: { showLabels: false },
+        yaxis: { showLabels: false },
+        pie: { show: true, explode: 6 },
+        mouse: { track: true },
+        legend: { position: \"se\", backgroundColor: \"#D2E8FF\" }
+    });
+})(document.getElementById(\"genero\"));
+ </script>
+ <script>
+ \$(function () {
+(function basic_radar(container) {
+    var s1 = { label: \"Enviados\", data: [ [0, 2345], [1, 1045], [2, 21], [3, 975], [4, 765], [5, 808], [6, 132], [7, 174], [8, 677], [9, 8] ] },
+        s2 = { label: \"Recividos\", data: [ [0, 586], [1, 522], [2, 21], [3, 975], [4, 255], [5, 202], [6, 54], [7, 58], [8, 677], [9, 8] ] },
+        graph, ticks;
+    ticks = [ [0, \"Denuncia\"], [1, \"Redes Sociales\"], [2, \"Cerrar\"], [3, \"Estatus\"], [4, \"Dato\"], [5, \"Consejo\"], [6, \"Abuso\"], [7, \"Ayuda\"], [8, \"Invitar\"], [9, \"Salir\"] ];
+    graph = Flotr.draw(container, [s1, s2], {
+        radar: { show: true },
+        grid: { circular: true, minorHorizontalLines: true },
+        yaxis: { min: 0, max: 2345, minorTickFreq: 2 },
+        xaxis: { ticks: ticks },
+        mouse: { track: true }
+    });
+})(document.getElementById(\"reglas\"));
+});
+    </script>
 ";
     }
 
-    // line 166
+    // line 209
     public function block_css($context, array $blocks = array())
     {
-        // line 167
+        // line 210
         echo "\t <script src=\"http://maps.google.com/maps/api/js?sensor=true\"></script>
  <script type=\"text/javascript\" src=\"http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/data.json\"></script>
  <script type=\"text/javascript\">
@@ -314,11 +357,11 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 
         var markers = [];
         ";
-        // line 187
+        // line 230
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable(range(1, $this->getAttribute($this->getContext($context, "valores"), "total_denuncias", array(), "array")));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 188
+            // line 231
             echo "         var latLng = new google.maps.LatLng( ";
             echo twig_escape_filter($this->env, (13.928652 + ((13.942481 - 13.928652) * (twig_random($this->env, 604) / 604))), "html", null, true);
             echo ", -";
@@ -331,15 +374,15 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 191
+        // line 234
         echo "        
         var markerCluster = new MarkerClusterer(map, markers);
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 \t<style type=\"text/css\">
-\t\t#mapa { width : auto; height: 200px; margin: 8px auto; }
-\t\t#mapas { width : auto; height: 200px; margin: 8px auto; }
+\t\t#reglas { width : auto; height: 300px; margin: 8px auto; }
+\t\t#genero { width : auto; height: 300px; position:fixed; }
 \t\t#map { width: auto; height: 360px; margin: 8px auto; }
 \t</style>
 ";
@@ -357,6 +400,6 @@ class __TwigTemplate_ebcb511317e0df5b10438d2cfa86ba02 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  333 => 191,  320 => 188,  316 => 187,  294 => 167,  291 => 166,  269 => 157,  250 => 150,  231 => 143,  209 => 135,  185 => 125,  172 => 119,  167 => 116,  164 => 115,  156 => 110,  153 => 109,  58 => 18,  54 => 17,  50 => 16,  46 => 15,  32 => 3,  29 => 2,);
+        return array (  376 => 234,  363 => 231,  359 => 230,  337 => 210,  334 => 209,  274 => 162,  255 => 155,  236 => 148,  214 => 140,  190 => 130,  177 => 124,  172 => 121,  169 => 120,  157 => 111,  154 => 110,  58 => 18,  54 => 17,  50 => 16,  46 => 15,  32 => 3,  29 => 2,);
     }
 }
