@@ -28,6 +28,34 @@ class ScdHistorialOperacionRepository extends EntityRepository
 	   catch (\Doctrine\Orm\NoResultException $e) { $query = null; }
 	  }
 
+   /**
+    * Consulta retorna las operaciones fallidas
+   */
+	  public function fallidas(){
+	   $sql = 'SELECT CAST(o.id AS text)||o.mensajeotrosms||CAST(o.id AS text) AS id FROM scd_usuario u, scd_otros_sms o WHERE get_numero(o.numerootrosms) = u.telefonousuario';//count (u.id)
+	   $rsm = new ResultSetMapping;
+	   $rsm->addEntityResult('modeloBundle:ScdUsuario', 'u');
+       $rsm->addFieldResult('u', 'id', 'id');
+	   
+	   $qns = $this->getEntityManager()->createNativeQuery($sql, $rsm);
+	   
+	   try { return $qns->getResult(); }
+	   catch (\Doctrine\Orm\NoResultException $e) { $query = null; }
+	  }
 
+   /**
+    * Consulta retorna las operaciones fallidas
+   */
+	  public function fallida(){
+   $query = $this->getEntityManager()
+            	->createQuery('
+            	SELECT o.inboxId
+                FROM modeloBundle:ScdUsuario u, modeloBundle:ScdOtrosSms o
+                WHERE u.telefonousuario = get_numero(o.numerootrosms)
+                GROUP BY o.inboxId')
+                ->getResult();
+   try { return $query; }
+   catch (\Doctrine\Orm\NoResultException $e) { $query = null; }
+	  }
   
 }

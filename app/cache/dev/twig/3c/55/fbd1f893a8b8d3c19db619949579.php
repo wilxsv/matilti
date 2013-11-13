@@ -122,10 +122,10 @@ class __TwigTemplate_3c55fbd1f893a8b8d3c19db619949579 extends Twig_Template
 \t<body>";
         // line 49
         $this->displayBlock('body', $context, $blocks);
-        // line 408
+        // line 220
         echo "  ";
         $this->displayBlock('crudMsg', $context, $blocks);
-        // line 418
+        // line 230
         echo "\t
 </body>
 </html>
@@ -258,51 +258,8 @@ class __TwigTemplate_3c55fbd1f893a8b8d3c19db619949579 extends Twig_Template
 \t\t\t\t\t";
         // line 118
         $this->displayBlock('marco', $context, $blocks);
-        // line 136
-        echo "\t\t\t\t\t<div class=\"span6\">
-\t\t\t\t\t\t<div class=\"widget widget-nopad\">
-\t\t\t\t\t\t\t<div class=\"widget-header\"><i class=\"icon-list-alt\"></i><h3> Resumen de envios [Matilti Feminista]</h3></div>
-\t\t\t\t\t\t\t<!-- /widget-header -->
-\t\t\t\t\t\t\t<div class=\"widget-content\">
-\t\t\t\t\t\t\t\t<div class=\"widget big-stats-container\">
-\t\t\t\t\t\t\t\t\t<div class=\"widget-content\">
-\t\t\t\t\t\t\t\t\t\t<h6 class=\"bigstats\">Resumen de todo el trafico que tiene la herramienta .</h6>
-\t\t\t\t\t\t\t\t\t\t<div id=\"big_stats\" class=\"cf\">
-\t\t\t\t\t\t\t\t\t\t\t<div class=\"stat\"> <i class=\"icon-anchor\"></i> <span class=\"value\">851</span> </div>
-\t\t\t\t\t\t\t\t\t\t\t<div class=\"stat\"> <i class=\"icon-thumbs-up-alt\"></i> <span class=\"value\">423</span> </div>
-\t\t\t\t\t\t\t\t\t\t\t<div class=\"stat\"> <i class=\"icon-twitter-sign\"></i> <span class=\"value\">922</span> </div>
-\t\t\t\t\t\t\t\t\t\t\t<div class=\"stat\"> <i class=\"icon-bullhorn\"></i> <span class=\"value\">25%</span> </div>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<!-- /widget-content --> 
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<!-- /widget -->
-\t\t\t\t\t</div>
-\t\t\t\t\t<!-- /span6 -->
-\t\t\t\t\t<div class=\"span6\">
-\t\t\t\t\t\t<div class=\"widget\"><div class=\"widget-header\"> <i class=\"icon-bookmark\"></i><h3>Enlaces importantes</h3></div>
-\t\t\t\t\t\t\t<!-- /widget-header -->
-\t\t\t\t\t\t\t<div class=\"widget-content\">
-\t\t\t\t\t\t\t\t<div class=\"shortcuts\">
-\t\t\t\t\t\t\t\t\t<a href=\"\" class=\"shortcut\"><i class=\"shortcut-icon icon-list-alt\"></i><span class=\"shortcut-label\">Apps</span> </a>
-\t\t\t\t\t\t\t\t\t<a href=\"\" class=\"shortcut\"><i class=\"shortcut-icon icon-bookmark\"></i><span class=\"shortcut-label\">Bookmarks</span> </a>
-\t\t\t\t\t\t\t\t\t<a href=\"\" class=\"shortcut\"><i class=\"shortcut-icon icon-signal\"></i> <span class=\"shortcut-label\">Reports</span></a>
-\t\t\t\t\t\t\t\t\t<a href=\"\" class=\"shortcut\"><i class=\"shortcut-icon icon-comment\"></i><span class=\"shortcut-label\">Comments</span> </a>
-\t\t\t\t\t\t\t\t\t<a href=\"\" class=\"shortcut\"><i class=\"shortcut-icon icon-user\"></i><span class=\"shortcut-label\">Users</span> </a>
-\t\t\t\t\t\t\t\t\t<a href=\"\" class=\"shortcut\"><i class=\"shortcut-icon icon-file\"></i><span class=\"shortcut-label\">Notes</span> </a>
-\t\t\t\t\t\t\t\t\t<a href=\"\" class=\"shortcut\"><i class=\"shortcut-icon icon-picture\"></i> <span class=\"shortcut-label\">Photos</span> </a>
-\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"shortcut\"> <i class=\"shortcut-icon icon-tag\"></i><span class=\"shortcut-label\">Tags</span> </a>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t<!-- /shortcuts -->
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<!-- /widget-content --> 
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<!-- /widget -->
-        </div>
-        <!-- /span6 --> 
-      </div>
+        // line 137
+        echo "      </div>
       <!-- /row --> 
     </div>
     <!-- /container --> 
@@ -314,46 +271,23 @@ class __TwigTemplate_3c55fbd1f893a8b8d3c19db619949579 extends Twig_Template
   <div class=\"extra-inner\">
     <div class=\"container\">
       <div class=\"row\">
-                    <div class=\"span3\">
-                        <h4>
-                            About Free Admin Template</h4>
+                    <div class=\"span4\">
+                        <h4>Matilti esta programada integramente con software libre.</h4>
                         <ul>
-                            <li><a href=\"javascript:;\">EGrappler.com</a></li>
-                            <li><a href=\"javascript:;\">Web Development Resources</a></li>
-                            <li><a href=\"javascript:;\">Responsive HTML5 Portfolio Templates</a></li>
-                            <li><a href=\"javascript:;\">Free Resources and Scripts</a></li>
+                            <li><a href=\"\">GNU/Linux Debian</a></li>
+                            <li><a href=\"\">PostgreSQL 9.1</a></li>
+                            <li><a href=\"\">Gammu Deamon 1.128</a></li>
+                            <li><a href=\"\">PHP 5.3</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class=\"span3\">
-                        <h4>
-                            Support</h4>
+                    <div class=\"span4\">
+                        <h4></h4>
                         <ul>
-                            <li><a href=\"javascript:;\">Frequently Asked Questions</a></li>
-                            <li><a href=\"javascript:;\">Ask a Question</a></li>
-                            <li><a href=\"javascript:;\">Video Tutorial</a></li>
-                            <li><a href=\"javascript:;\">Feedback</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class=\"span3\">
-                        <h4>
-                            Something Legal</h4>
-                        <ul>
-                            <li><a href=\"javascript:;\">Read License</a></li>
-                            <li><a href=\"javascript:;\">Terms of Use</a></li>
-                            <li><a href=\"javascript:;\">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class=\"span3\">
-                        <h4>
-                            Open Source jQuery Plugins</h4>
-                        <ul>
-                            <li><a href=\"http://www.egrappler.com\">Open Source jQuery Plugins</a></li>
-                            <li><a href=\"http://www.egrappler.com;\">HTML5 Responsive Tempaltes</a></li>
-                            <li><a href=\"http://www.egrappler.com;\">Free Contact Form Plugin</a></li>
-                            <li><a href=\"http://www.egrappler.com;\">Flat UI PSD</a></li>
+                            <li><a href=\"\">Morris js</a></li>
+                            <li><a href=\"\">JQuery 1.7</a></li>
+                            <li><a href=\"\">Excanvas</a></li>
+                            <li><a href=\"\">google maps utility library v3</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
@@ -369,7 +303,7 @@ class __TwigTemplate_3c55fbd1f893a8b8d3c19db619949579 extends Twig_Template
   <div class=\"footer-inner\">
     <div class=\"container\">
       <div class=\"row\">
-        <div class=\"span12\"> &copy; 2013 <a href=\"http://www.egrappler.com/\">Bootstrap Responsive Admin Template</a>. </div>
+        <div class=\"span12\"> Template modificado y basado en  <a href=\"http://www.egrappler.com/\">Bootstrap Responsive Admin Template</a>. </div>
         <!-- /span12 --> 
       </div>
       <!-- /row --> 
@@ -383,149 +317,26 @@ class __TwigTemplate_3c55fbd1f893a8b8d3c19db619949579 extends Twig_Template
 ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
 <script src=\"";
-        // line 259
+        // line 194
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/defensora/js/jquery-1.7.2.min.js"), "html", null, true);
         echo "\"></script> 
 <script src=\"";
-        // line 260
+        // line 195
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/defensora/js/excanvas.min.js"), "html", null, true);
         echo "\"></script> 
 <script src=\"";
-        // line 261
+        // line 196
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/defensora/js/chart.min.js"), "html", null, true);
         echo "\" type=\"text/javascript\"></script> 
 <script src=\"";
-        // line 262
+        // line 197
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/defensora/js/bootstrap.js"), "html", null, true);
         echo "\"></script>
 <script language=\"javascript\" type=\"text/javascript\" src=\"";
-        // line 263
+        // line 198
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/defensora/js/full-calendar/fullcalendar.min.js"), "html", null, true);
         echo "\"></script>
  
-<script src=\"js/base.js\"></script> 
-<script>     
-
-        var lineChartData = {
-            labels: [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\"],
-            datasets: [
-\t\t\t\t{
-\t\t\t\t    fillColor: \"rgba(220,220,220,0.5)\",
-\t\t\t\t    strokeColor: \"rgba(220,220,220,1)\",
-\t\t\t\t    pointColor: \"rgba(220,220,220,1)\",
-\t\t\t\t    pointStrokeColor: \"#fff\",
-\t\t\t\t    data: [65, 59, 90, 81, 56, 55, 40]
-\t\t\t\t},
-\t\t\t\t{
-\t\t\t\t    fillColor: \"rgba(151,187,205,0.5)\",
-\t\t\t\t    strokeColor: \"rgba(151,187,205,1)\",
-\t\t\t\t    pointColor: \"rgba(151,187,205,1)\",
-\t\t\t\t    pointStrokeColor: \"#fff\",
-\t\t\t\t    data: [28, 48, 40, 19, 96, 27, 100]
-\t\t\t\t}
-\t\t\t]
-
-        }
-
-        var myLine = new Chart(document.getElementById(\"area-chart\").getContext(\"2d\")).Line(lineChartData);
-
-
-        var barChartData = {
-            labels: [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\"],
-            datasets: [
-\t\t\t\t{
-\t\t\t\t    fillColor: \"rgba(220,220,220,0.5)\",
-\t\t\t\t    strokeColor: \"rgba(220,220,220,1)\",
-\t\t\t\t    data: [65, 59, 90, 81, 56, 55, 40]
-\t\t\t\t},
-\t\t\t\t{
-\t\t\t\t    fillColor: \"rgba(151,187,205,0.5)\",
-\t\t\t\t    strokeColor: \"rgba(151,187,205,1)\",
-\t\t\t\t    data: [28, 48, 40, 19, 96, 27, 100]
-\t\t\t\t}
-\t\t\t]
-
-        }    
-
-        \$(document).ready(function() {
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        var calendar = \$('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-          },
-          selectable: true,
-          selectHelper: true,
-          select: function(start, end, allDay) {
-            var title = prompt('Event Title:');
-            if (title) {
-              calendar.fullCalendar('renderEvent',
-                {
-                  title: title,
-                  start: start,
-                  end: end,
-                  allDay: allDay
-                },
-                true // make the event \"stick\"
-              );
-            }
-            calendar.fullCalendar('unselect');
-          },
-          editable: true,
-          events: [
-            {
-              title: 'All Day Event',
-              start: new Date(y, m, 1)
-            },
-            {
-              title: 'Long Event',
-              start: new Date(y, m, d+5),
-              end: new Date(y, m, d+7)
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: new Date(y, m, d-3, 16, 0),
-              allDay: false
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: new Date(y, m, d+4, 16, 0),
-              allDay: false
-            },
-            {
-              title: 'Meeting',
-              start: new Date(y, m, d, 10, 30),
-              allDay: false
-            },
-            {
-              title: 'Lunch',
-              start: new Date(y, m, d, 12, 0),
-              end: new Date(y, m, d, 14, 0),
-              allDay: false
-            },
-            {
-              title: 'Birthday Party',
-              start: new Date(y, m, d+1, 19, 0),
-              end: new Date(y, m, d+1, 22, 30),
-              allDay: false
-            },
-            {
-              title: 'EGrappler.com',
-              start: new Date(y, m, 28),
-              end: new Date(y, m, 29),
-              url: 'http://EGrappler.com/'
-            }
-          ]
-        });
-      });
-    </script><!-- /Calendar -->
-    <!-- AddThis Smart Layers BEGIN -->
 <!-- Go to http://www.addthis.com/get/smart-layers to customize -->
 <script type=\"text/javascript\" src=\"//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526d655b07eca5be\"></script>
 <script type=\"text/javascript\">
@@ -552,47 +363,48 @@ class __TwigTemplate_3c55fbd1f893a8b8d3c19db619949579 extends Twig_Template
     public function block_marco($context, array $blocks = array())
     {
         // line 119
-        echo "\t      \t<div class=\"span12\">
-\t      \t\t
-\t      \t\t<div id=\"target-1\" class=\"widget\">
-\t      \t\t\t
-\t      \t\t\t<div class=\"widget-content\">
-\t      \t\t\t\t
-\t\t\t      \t\t<h1>12 Columns</h1>
-\t\t\t      \t\t
-\t\t\t      \t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\t
-\t\t\t      \t\t
-\t\t      \t\t</div> <!-- /widget-content -->
-\t\t      \t\t
-\t      \t\t</div> <!-- /widget -->
-\t      \t\t
-      \t\t</div> <!-- /span12 -->
+        echo "\t<div class=\"span6\">
+\t\t<div class=\"widget\">
+\t\t\t<div class=\"widget-content\">
+\t\t\t\t<h1>6 Columns</h1>
+\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+\t\t\t</div> <!-- /widget-content -->
+\t\t</div> <!-- /widget -->
+\t</div>
+\t<div class=\"span6\">
+\t\t<div class=\"widget\">
+\t\t\t<div class=\"widget-content\">
+\t\t\t\t<h1>6 Columns</h1>
+\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+\t\t\t</div> <!-- /widget-content -->
+\t\t</div> <!-- /widget -->
+\t</div>
 
 \t\t\t\t\t";
     }
 
-    // line 408
+    // line 220
     public function block_crudMsg($context, array $blocks = array())
     {
-        // line 409
+        // line 221
         echo "   <div id=\"error\" title=\"Estado de registro\">
     <img src=\"";
-        // line 410
+        // line 222
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/etc/process-stop.png"), "html", null, true);
         echo "\" /><b>Error al procesar el registro</b><br />
     Por favor, verifique los datos e intente nuevamente.
    </div>
    <div id=\"load\" title=\"Estado :: \"><img src=\"";
-        // line 413
+        // line 225
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/etc/load.png"), "html", null, true);
         echo "\" /></div>
    <div id=\"ok\" title=\"Estado de registro\"><img src=\"";
-        // line 414
+        // line 226
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/etc/accessories-text-editor.png"), "html", null, true);
         echo "\" height=\"32\" width=\"32\" />Registro procesado con exito.</div>
    <div id=\"delete\" title=\"Eliminar registro ::\">
     <p><img src=\"";
-        // line 416
+        // line 228
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/etc/edit-clear.png"), "html", null, true);
         echo "\" height=\"32\" width=\"32\" />Este registro se eliminará permanentemente. <br /><b>¿Está seguro de hacerlo?</b></p>
    </div>
@@ -611,6 +423,6 @@ class __TwigTemplate_3c55fbd1f893a8b8d3c19db619949579 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  594 => 416,  589 => 414,  585 => 413,  579 => 410,  576 => 409,  573 => 408,  553 => 119,  550 => 118,  401 => 263,  397 => 262,  393 => 261,  389 => 260,  385 => 259,  260 => 136,  258 => 118,  212 => 75,  208 => 74,  200 => 69,  196 => 68,  192 => 67,  188 => 66,  184 => 65,  180 => 64,  176 => 63,  169 => 59,  158 => 50,  155 => 49,  150 => 47,  145 => 46,  140 => 21,  134 => 5,  127 => 418,  124 => 408,  122 => 49,  119 => 48,  116 => 47,  113 => 46,  111 => 45,  107 => 44,  85 => 25,  81 => 24,  77 => 23,  72 => 22,  70 => 21,  66 => 20,  57 => 14,  53 => 13,  49 => 12,  44 => 10,  40 => 9,  34 => 6,  30 => 5,  24 => 1,);
+        return array (  406 => 228,  401 => 226,  397 => 225,  391 => 222,  388 => 221,  385 => 220,  364 => 119,  361 => 118,  335 => 198,  331 => 197,  327 => 196,  323 => 195,  319 => 194,  260 => 137,  258 => 118,  212 => 75,  208 => 74,  200 => 69,  196 => 68,  192 => 67,  188 => 66,  184 => 65,  180 => 64,  176 => 63,  169 => 59,  158 => 50,  155 => 49,  150 => 47,  145 => 46,  140 => 21,  134 => 5,  127 => 230,  124 => 220,  122 => 49,  119 => 48,  116 => 47,  113 => 46,  111 => 45,  107 => 44,  85 => 25,  81 => 24,  77 => 23,  72 => 22,  70 => 21,  66 => 20,  57 => 14,  53 => 13,  49 => 12,  44 => 10,  40 => 9,  34 => 6,  30 => 5,  24 => 1,);
     }
 }

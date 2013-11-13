@@ -124,4 +124,19 @@ class ScdDenunciaRepository extends EntityRepository{
            		->getResult();
 	return $mensajes;
     }
+
+   /**
+    * Consulta retorna la cantidad de denuncias por origen
+   */
+	  public function findAllByLocalidad(){
+   $query = $this->getEntityManager()
+            	->createQuery('
+            	SELECT l.nombrelocalidad, count( l.id ) as total
+                FROM modeloBundle:ScdDenuncia d, modeloBundle:ScdUsuario u, modeloBundle:ScdLocalidad l
+                WHERE d.usuario = u.id AND u.localidad = l.id
+                GROUP BY l.id')->setMaxResults(5)
+                ->getResult();
+   try { return $query; }
+   catch (\Doctrine\Orm\NoResultException $e) { $query = null; }
+	  }
 }
